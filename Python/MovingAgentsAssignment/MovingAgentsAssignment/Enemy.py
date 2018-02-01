@@ -1,5 +1,6 @@
 import pygame
 import Vector
+import random
 from pygame import *
 from Vector import *
 
@@ -7,7 +8,7 @@ class Enemy(object):
     """Character Object Base"""
     position = Vector(0,0)
     velocity = Vector(0,0)
-    orientation = 0
+    orientation = Vector(0,0)
     angAccel = 0
     angVel = 0
     size = 0
@@ -29,7 +30,8 @@ class Enemy(object):
     def draw(self, screen):
         self.drawRect = pygame.Rect(self.position.x, self.position.y, self.size, self.size)
         pygame.draw.rect(screen, (0,128,255), self.drawRect)
-        pygame.draw.line(screen, (255,255,255), self.drawRect.center, (self.position.x + self.size / 2 + self.velocity.normalize().scale(self.size).x, self.position.y + self.size / 2 + self.velocity.normalize().scale(self.size).y), 3)
+        pygame.draw.line(screen, (0,255,255), self.drawRect.center, (self.position.x + self.size / 2 + self.velocity.normalize().scale(self.size).x, self.position.y + self.size / 2 + self.velocity.normalize().scale(self.size).y), 3)
+        pygame.draw.line(screen, (255,0,0), self.drawRect.center, (self.position.x + self.size / 2 + self.orientation.normalize().scale(self.size).x, self.position.y + self.size / 2 + self.orientation.normalize().scale(self.size).y), 3)
         
     def update(self):
         self.position += self.velocity.normalize()
@@ -43,8 +45,12 @@ class Humanoid(Enemy):
         Enemy.__init__(self, size, position, velocity, orientation, 0, 0)
 
     def update(self):
+        if (self.orientation != self.velocity):
+            self.velocity = self.orientation
+
         if (self.behaviourState == "Wander"):
-            print("Wandering")
+            self.velocity += Vector (random.triangular(-1, 1), random.triangular(-1,1)).scale(0.1)
+            self.seek(self.position + self.velocity.scale(.05))
         elif (self.behaviourState == "Seek"):
             self.seek(Vector(150, 150))
         
@@ -53,4 +59,4 @@ class Humanoid(Enemy):
             self.position = target
             self.behaviourState = "Wander"
         else:
-            self.position += (target - self.position).normalize()
+            self.position += (target - self.position).normalize().scale(.05)
