@@ -110,22 +110,22 @@ GetDateFromJulian(double jd, int *month, int *day, int *year)
   }
 
   B = A + 1524;
-  C = (int)((B - 122.1) / 365.25);
-  D = (int)(365.25 * C);
-  E = (int)((B - D) / 30.6001);
+  C = ((B - 122.1) / 365.25);
+  D = (365.25 * C);
+  E = ((B - D) / 30.6001);
 
-  (*day) = B - D - ((int)(30.6001 * E)) + F;
-  if (E < 14) {
+  (*day) = (int)(B - D - ((30.6001 * E)) + F);
+  if ((int)E < 14) {
     (*month) = E - 1;
   }
-  else if (E == 15 || E == 14) {
-    (*month) = E - 13;
+  else if ((int)E == 15 || (int)E == 14) {
+    (*month) = (int)E - 13;
   }
   if (*month > 2) {
-    (*year) = C - 4716;
+    (*year) = (int)C - 4716;
   }
   else if (*month == 1 || *month == 2) {
-    (*year) = C - 4715;
+    (*year) = (int)C - 4715;
   }
 }
 
@@ -137,7 +137,9 @@ Problem2(float jul, int deltaDays)
   //getDoubleFromUser("Enter a valid Julian Day:");
   printf("Enter a valid Julian Day:\n");
   scanf("%f", &jd);*/
-  float jd = jul + deltaDays;
+  printf("Julian, %f, Days, %d, Julian + Days: %f", jul, deltaDays, jul + (double)deltaDays);
+  double jd = jul + deltaDays;
+  printf("\nJd: %f\n", jd);
   int m, d, y;
   if (jd != -999.0) {
     GetDateFromJulian(jd, &m, &d, &y);
