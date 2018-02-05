@@ -25,24 +25,10 @@ main()
   int dayCount;
   scanf("%d", &dayCount);
   Problem2(jul, dayCount);
-  
   printf("\n");
   printf("Press <ENTER> to continue...\n");
-  scanf("%d", &dayCount);
+  getch();
 }
-
-//double
-//getDoubleFromUser(char* msg) {
-//  printf(msg);
-//  char input, term;
-//  if (scanf("%lf%c"), &input, &term) != 2){
-//    if (term >= 0x41 && term <= 0x7A) {
-//      printf("That's not a valid number!\n");
-//      return -999.0;
-//    }
-//  }
-//  return input;
-//}
 
 double
 GetJulianDay(int Y, int M, int D)
@@ -89,8 +75,6 @@ Problem1()
   scanf("%d", &s);
   double day = GetJulianDay(y, m, d);
   double dayPart = GetDayPart(h, n, s);
-  printf("The Julian Day is: %f\nThe day part is %f\nThe time part is %f\n",
-    day + dayPart, day, dayPart);
   return day + dayPart;
 }
 
@@ -106,15 +90,15 @@ GetDateFromJulian(double jd, int *month, int *day, int *year)
   }
   else {
     alpha = (int)((Z - 1867216.25) / 36524.25);
-    A = Z + 1 + alpha - (int)(alpha / 4);
+    A = Z + 1 + alpha - ((int)(alpha / 4));
   }
 
   B = A + 1524;
-  C = ((B - 122.1) / 365.25);
-  D = (365.25 * C);
-  E = ((B - D) / 30.6001);
+  C = (int) ((B - 122.1) / 365.25);
+  D = (int) (365.25 * C);
+  E = (int) ((B - D) / 30.6001);
 
-  (*day) = (int)(B - D - ((30.6001 * E)) + F);
+  (*day) = B - D - ((int)(30.6001 * E)) + F;
   if ((int)E < 14) {
     (*month) = E - 1;
   }
@@ -137,9 +121,7 @@ Problem2(float jul, int deltaDays)
   //getDoubleFromUser("Enter a valid Julian Day:");
   printf("Enter a valid Julian Day:\n");
   scanf("%f", &jd);*/
-  printf("Julian, %f, Days, %d, Julian + Days: %f", jul, deltaDays, jul + (double)deltaDays);
   double jd = jul + deltaDays;
-  printf("\nJd: %f\n", jd);
   int m, d, y;
   if (jd != -999.0) {
     GetDateFromJulian(jd, &m, &d, &y);

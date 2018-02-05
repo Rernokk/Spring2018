@@ -1,12 +1,11 @@
 ﻿  main.c
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(59): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(60): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(70): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(94): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(105): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(113): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(114): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(115): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\imadu\documents\spring2018\c\calendarconverter\calendarconverter\main.c(148): warning C4098: 'Problem2': 'void' function returning a value
-  CalendarConverter.vcxproj -> C:\Users\imadu\Documents\Spring2018\C\CalendarConverter\Debug\CalendarConverter.exe
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(30): warning C4013: 'getch' undefined; assuming extern returning int
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(56): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(78): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(89): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(93): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(101): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverter\calendarconverter\main.c(130): warning C4098: 'Problem2': 'void' function returning a value
+  CalendarConverter.vcxproj -> C:\Users\slyth\Desktop\Spring2018\C\CalendarConverter\Debug\CalendarConverter.exe

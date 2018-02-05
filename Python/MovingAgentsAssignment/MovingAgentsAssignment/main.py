@@ -8,7 +8,9 @@ from Vector import *
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
-Enemies = [Humanoid(60, Vector(200,200), Vector(1,1), Vector(1, 0), 0, 0)]
+Enemies = [Humanoid(60, Vector(200,100), Vector(1,0), 45, 0, 0),
+           Humanoid(60, Vector(400,300), Vector(0,0), 0, 0, 0)]
+           #Humanoid(60, Vector(200,500), Vector(1,0), -45, 0, 0)]
 
 clock = time.Clock()
 while not done:
@@ -18,7 +20,8 @@ while not done:
             done = True
 
     pressed = pygame.key.get_pressed()
-        
+    if pressed[pygame.K_x] : Enemies[0].seek(Enemies[1])
+
     for character in Enemies:
         for otherChar in Enemies:
             if (otherChar != character):

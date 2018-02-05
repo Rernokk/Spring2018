@@ -32,3 +32,24 @@ class Vector(object):
 
     def distance(self, other):
         return (self - other).length()
+
+    def angleBetween(self, other):
+        return math.degrees(math.atan2(self.y - other.y, self.x - other.x));
+
+    def rotate(self, angle):
+        val = self.normalize()
+        length = math.sqrt(val.x ** 2 + val.y ** 2)
+        ang = math.atan2(val.y, val.x)
+        #ang = math.degrees(ang)
+        #if (self.y > 0 and self.x < 0):
+        #    ang += 180
+        #elif (self.y < 0 and self.x < 0):
+        #    ang += 180
+        #elif (self.y < 0 and self.x > 0):
+        #    ang += 360
+        
+        ang += angle
+        ang = math.radians(ang)
+        self.x = (length * math.cos(ang))
+        self.y = (length * math.sin(ang))
+        return
