@@ -13,7 +13,7 @@ class Enemy(object):
     size = 0
     drawRect = pygame.Rect(0,0,0,0)
     behaviourState = "Wander"
-    target = 0
+    target = Vector(200,200)
     selfRotDelay = 0
     sprite = pygame.Surface((100,100))
     original_Sprite = 0
@@ -56,41 +56,66 @@ class Humanoid(Enemy):
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
         spr = pygame.image.load("Humanoid.png")
         self.original_Sprite = spr.convert_alpha()
+        self.target = 0
         Enemy.__init__(self, size, position, velocity, orientation, 0, 0)
 
     def update(self):
-        #self.angle = math.atan2(-self.velocity.y, self.velocity.x)
-        if (self.behaviourState == "Wander"):
-            if (self.selfRotDelay > 1):
-                if (self.orientation > 45 or self.orientation < -45):
-                    self.dir *= -1
-                self.orientation += self.dir
-                #self.angle += random.uniform(-1, 1) * random.uniform(-1, 1) * 5
-                self.selfRotDelay = 0
-            else:
-                self.selfRotDelay+=1
-            self.velocity.rotate(self.orientation)
-            self.seek(self.position + self.velocity.normalize())
-        elif (self.behaviourState == "Seek"):
-            self.seek(Vector(550, 150))
-        elif (self.behaviourState == "Evade"):
-            print("Evading")
-        elif(self.behaviourState == "Flee"):
-            print("Flee")
+        if (self.target is not None and (type(self.target) == Vector or type(self.target) == Enemy)):
+            print(self.behaviourState)
+            if (self.behaviourState == "Wander"):
+                if (self.selfRotDelay > 1):
+                    if (self.orientation > 45 or self.orientation < -45):
+                        self.dir *= -1
+                    self.orientation += self.dir
+                    #self.angle += random.uniform(-1, 1) * random.uniform(-1, 1) * 5
+                    self.selfRotDelay = 0
+                else:
+                    self.selfRotDelay+=1
+                self.velocity.rotate(self.orientation)
+                self.target = self.position + self.velocity.normalize()
+                self.seek(self.target)
+            elif (self.behaviourState == "Seek"):
+                self.seek(self.target)
+            elif (self.behaviourState == "Evade"):
+                print("Evading")
+            elif(self.behaviourState == "Flee"):
+                print("Flee")
         
     def seek(self, target):
-        if (self.position.distance(target.position) < 10):
-            self.position = target.position
-            self.behaviourState = "Wander"
-        elif(self.position.distance(target.position) > 100):
-            self.behaviourState = "Wander"
+        self.target = target
+        if (type(target) == Enemy):
+            if (self.position.distance(target.position) < 10):
+                self.position = target.position
+                self.behaviourState = "Wander"
+            elif(self.position.distance(target.position) > 10000):
+                self.behaviourState = "Wander"
+            else:
+                self.velocity.rotate(self.orientation)
+                self.position += self.velocity.normalize();
+        elif(type(target) == Vector):
+            if (self.position.distance(target) < 10):
+                self.position = target
+                self.behaviourState = "Wander"
+            elif(self.position.distance(target) > 10000):
+                self.behaviourState = "Wander"
+            else:
+                self.velocity.rotate(self.orientation)
+                self.position += self.velocity.normalize();
         else:
-            self.velocity += self.velocity.rotate(self.orientation)
-            self.position += self.velocity.normalize();
+            print("Invalid Target")
 
-    def flee(self, point):
-        if (self.position.distance(point) > 100):
-            self.behaviourState = "Wander"
+    def flee(self, target):
+        if (type(target) == Vector):
+            if (self.position.distance(target) > 100000):
+                self.behaviourState = "Wander"
+            else:
+                self.velocity.rotate(self.orientation)
+                self.position += self.velocity.normalize()
+        elif (type(target) == Enemy):
+            if (self.position.distance(target.position) > 100000):
+                self.behaviourState = "Wander"
+            else:
+                self.velocity.rotate(self.orientation)
+                self.position += self.velocity.normalize()
         else:
-            self.velocity += self.velocity.rotate(self.orientation)
-            self.position += self.velocity.normalize()
+            print("Invalid Target")
