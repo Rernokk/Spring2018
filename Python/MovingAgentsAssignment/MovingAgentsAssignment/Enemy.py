@@ -18,7 +18,6 @@ class Enemy(object):
     sprite = pygame.Surface((100,100))
     original_Sprite = 0
     orientation = 0
-    dir = 1
 
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
         self.position = position
@@ -43,14 +42,25 @@ class Enemy(object):
         self.drawRect.center = (x,y)
         screen.blit(self.sprite, (self.position.x, self.position.y))
         pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y)*60, 3)
-        pygame.draw.line(screen, (255, 0, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y)*60, 3)
+        pygame.draw.line(screen, (255, 0, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.ghostRotation(self.orientation).normalize().x, self.velocity.ghostRotation(self.orientation).normalize().y)*60, 3)
+        pygame.draw.line(screen, (255, 255, 255), self.drawRect.topleft, self.drawRect.topright, 3)
+        pygame.draw.line(screen, (255, 255, 255), self.drawRect.topleft, self.drawRect.bottomleft, 3)
+        pygame.draw.line(screen, (255, 255, 255), self.drawRect.bottomright, self.drawRect.topright, 3)
+        pygame.draw.line(screen, (255, 255, 255), self.drawRect.bottomleft, self.drawRect.bottomright, 3)
         
-    def update(self):
-        self.position += self.velocity.rotate(self.orientation).normalize()
+    def update(self, step):
+        self.velocity.rotate(self.orientation)
+        self.position += self.velocity.normalize().scale(step)
 
-    def updateByCollision(self):
-        self.velocity = self.velocity.scale(-1)
+    def updateByCollision(self, step):
+        self.orientation -= 180
+        self.velocity.rotate(self.orientation)
+        self.velocity = self.velocity.normalize().scale(-1 * step)
         self.position += self.velocity
+
+    def registerUnitInRange(self, unit):
+        if (typeof(unit) == Humanoid):
+            print("Human is in range")
 
 class Humanoid(Enemy):
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
@@ -59,29 +69,26 @@ class Humanoid(Enemy):
         self.target = 0
         Enemy.__init__(self, size, position, velocity, orientation, 0, 0)
 
-    def update(self):
+    def update(self, step):
+        #print("Calculated: " + str(self.velocity.calculateVectorAngle()) + ", orientation = " + str(self.orientation))
         if (self.target is not None and (type(self.target) == Vector or type(self.target) == Enemy)):
-            print(self.behaviourState)
             if (self.behaviourState == "Wander"):
                 if (self.selfRotDelay > 1):
-                    if (self.orientation > 45 or self.orientation < -45):
-                        self.dir *= -1
-                    self.orientation += self.dir
-                    #self.angle += random.uniform(-1, 1) * random.uniform(-1, 1) * 5
+                    self.orientation += random.uniform(-1, 1) * random.uniform(-1, 1) * 2
                     self.selfRotDelay = 0
                 else:
                     self.selfRotDelay+=1
                 self.velocity.rotate(self.orientation)
                 self.target = self.position + self.velocity.normalize()
-                self.seek(self.target)
+                self.seek(self.target, step)
             elif (self.behaviourState == "Seek"):
-                self.seek(self.target)
+                self.seek(self.target, step)
             elif (self.behaviourState == "Evade"):
                 print("Evading")
             elif(self.behaviourState == "Flee"):
                 print("Flee")
         
-    def seek(self, target):
+    def seek(self, target, step):
         self.target = target
         if (type(target) == Enemy):
             if (self.position.distance(target.position) < 10):
@@ -91,7 +98,7 @@ class Humanoid(Enemy):
                 self.behaviourState = "Wander"
             else:
                 self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize();
+                self.position += self.velocity.normalize() * step
         elif(type(target) == Vector):
             if (self.position.distance(target) < 10):
                 self.position = target
@@ -100,22 +107,54 @@ class Humanoid(Enemy):
                 self.behaviourState = "Wander"
             else:
                 self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize();
+                self.position += self.velocity.normalize() * step
         else:
             print("Invalid Target")
 
-    def flee(self, target):
+    def flee(self, target, step):
         if (type(target) == Vector):
             if (self.position.distance(target) > 100000):
                 self.behaviourState = "Wander"
             else:
                 self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize()
+                self.position += self.velocity.normalize() * step
         elif (type(target) == Enemy):
             if (self.position.distance(target.position) > 100000):
                 self.behaviourState = "Wander"
             else:
                 self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize()
+                self.position += self.velocity.normalize() * step
         else:
             print("Invalid Target")
+
+    def registerUnitInRange(self, unit):
+        if (type(unit) == Humanoid):
+            print("Humanoid: Vehicle in range, seeking")
+        elif (type(unit) == Gunship):
+            print("Humanoid: Gunship in range, pursuing")
+
+class Vehicle(Enemy):
+    def __init__(self, size, position, velocity, orientation, angAccel, angVel):
+        spr = pygame.image.load("Humanoid.png")
+        self.original_Sprite = spr.convert_alpha()
+        self.target = 0
+        Enemy.__init__(self, size, position, velocity, orientation, angAccel, angVel)
+
+    def registerUnitInRange(self, unit):
+        if (type(unit) == Gunship):
+            print("Vehicle: Gunship in range, seeking")
+        elif (type(unit) == Humanoid):
+            print("Vehicle: Humanoid in range, pursuing")
+
+class Gunship (Enemy):
+    def __init__(self, size, position, velocity, orientation, angAccel, angVel):
+        spr = pygame.image.load("Humanoid.png")
+        self.original_Sprite = spr.convert_alpha()
+        self.target = 0
+        Enemy.__init__(self, size, position, velocity, orientation, angAccel, angVel)
+
+    def registerUnitInRange(self, unit):
+        if (typeof(unit) == Humanoid):
+            print("Gunship: Humanoid in range, seeking")
+        elif (typeof(unit) == Vehicle):
+            print("Gunship: Vehicle in range, pursuing")
