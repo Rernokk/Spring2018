@@ -1,4 +1,6 @@
 import math
+import Enemy
+from Enemy import *
 
 class Vector(object):
     """description of class"""
@@ -37,7 +39,10 @@ class Vector(object):
             return Vector(self.x/self.length(), self.y/self.length())
 
     def distance(self, other):
-        return (self - other).length()
+        if (type(other) == Vector):
+            return (self - other).length()
+        elif (isinstance(other, Enemy.Enemy)):
+            return (self - other.position).length()
 
     def angleBetween(self, other):
         return math.degrees(math.atan2(self.y - other.y, self.x - other.x));

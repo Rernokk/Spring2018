@@ -4,13 +4,13 @@ import Vector
 from pygame import *
 from Enemy import *
 from Vector import *
-CONST_FACTOR = 10
+CONST_FACTOR = 1000
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
 Enemies =  [#Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
-           Humanoid(16, Vector(100, 300), Vector(1,0), 0, 0, 0)
-           ,Humanoid(16, Vector(700, 300), Vector(1,0), 180,0, 0)
+           Humanoid(16, Vector(500, 100), Vector(1,0), 90, 0, 0)
+           ,Humanoid(16, Vector(300, 100), Vector(1,0),60,0, 0)
            #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
            #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
            #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
@@ -34,13 +34,13 @@ while not done:
                 if (character.drawRect.colliderect(otherChar.drawRect)):
                     otherChar.updateByCollision(clock.get_time()/CONST_FACTOR)
                 
-                if (character.position.distance(otherChar.position) < 100):
+                if (character.position.distance(otherChar.position) < 400):
                     character.registerUnitInRange(otherChar, "Fight")
                     otherChar.registerUnitInRange(character, "Flight")
 
         character.update(clock.get_time()/CONST_FACTOR)
-        if (character.position.x + character.size > 800 or character.position.x < 0 or character.position.y < 0 or character.position.y + character.size > 600):
-            character.updateByCollision(clock.get_time()/CONST_FACTOR)
+        #if (character.position.x + character.size > 800 or character.position.x < 0 or character.position.y < 0 or character.position.y + character.size > 600):
+            #character.updateByCollision(clock.get_time()/CONST_FACTOR)
 
     screen.fill((100, 149, 237))
     for character in Enemies:

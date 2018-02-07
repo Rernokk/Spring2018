@@ -4,7 +4,7 @@ import random
 from pygame import *
 from Vector import *
 
-CONST_VAL = 200
+CONST_VAL = 600
 
 class Enemy(object):
     """Character Object Base"""
@@ -23,7 +23,7 @@ class Enemy(object):
     targetPosition = Vector(0,0)
 
     maxSpeed = 5
-    maxPred = 3
+    maxPred = 1200
 
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
         self.position = position
@@ -44,81 +44,39 @@ class Enemy(object):
         x,y = self.drawRect.center
         self.drawRect = self.sprite.get_rect()
         self.drawRect.center = (x,y)
-        pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y) * 60, 3)
-        pygame.draw.line(screen, (255, 0, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.ghostRotation(self.orientation).normalize().x, self.velocity.ghostRotation(self.orientation).normalize().y) * 60, 3)
+        #pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y) * 60, 3)
+        #pygame.draw.line(screen, (255, 0, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.ghostRotation(self.orientation).normalize().x, self.velocity.ghostRotation(self.orientation).normalize().y) * 60, 3)
         
-        if (type(self.targetPosition) == Vector):
-            pygame.draw.line(screen, (0, 0, 255), self.drawRect.center, pygame.math.Vector2(self.targetPosition.x, self.targetPosition.y), 2)
-        elif (isinstance(self.targetPosition, Enemy)):
+        if (type(self.target) == Vector):
+            pygame.draw.line(screen, (0, 0, 255), self.drawRect.center, pygame.math.Vector2((self.velocity.normalize().x * 30) + self.drawRect.center[0], (self.velocity.normalize().y * 30) + self.drawRect.center[1]), 2)
+        elif (isinstance(self.target, Enemy)):
             pygame.draw.line(screen, (0, 0, 255), self.drawRect.center, self.target.drawRect.center, 2)
         
         screen.blit(self.sprite, (self.position.x, self.position.y))
 
-        
-    def update(self, step):
-        self.velocity.rotate(self.orientation)
-        self.position += self.velocity.normalize().scale(step)
-
     def updateByCollision(self, step):
-        self.target = Vector(0,0)
         self.position = Vector(random.uniform(self.size * 2, 800 - (self.size * 2)), random.uniform(self.size * 2, 600 - (self.size * 2)))
+        self.target = self.position
         self.behaviourState = "Wander"
         self.orientation = random.uniform(0, 359)
 
     def registerUnitInRange(self, unit, style):
         print("Enemy base class range method called")
-        
-    def flee(self, target, step):
-        if (type(target) == Vector):
-            if (self.position.distance(target) > CONST_VAL):
-                self.behaviourState = "Wander"
-            else:
-                self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize() * step
-        elif (isinstance(target, Enemy)):
-            if (self.position.distance(target.position) > CONST_VAL):
-                self.behaviourState = "Wander"
-            else:
-                #self.velocity.rotate(self.orientation)
-                self.velocity = self.position - target.position
-                self.position += self.velocity.normalize() * step
-        else:
-            print("Invalid Target")
-
-    def seek(self, target, step):
-        self.target = target
-        if (isinstance(target, Enemy)):
-            if (self.position.distance(target.position) < 10):
-                self.position = target.position
-                self.behaviourState = "Wander"
-            elif(self.position.distance(target.position) > 10000):
-                self.behaviourState = "Wander"
-            else:
-                self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize() * step
-        elif(type(target) == Vector):
-            if (self.position.distance(target) < 10):
-                self.position = target
-                self.behaviourState = "Wander"
-            elif(self.position.distance(target) > 10000):
-                self.behaviourState = "Wander"
-            else:
-                self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize() * step
-        else:
-            print("Invalid Target")
 
 class Humanoid(Enemy):
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
         spr = pygame.image.load("Humanoid.png")
         self.original_Sprite = spr.convert_alpha()
         self.target = self.position
-        self.maxSpeed = 1
+        self.maxSpeed = 30
         Enemy.__init__(self, size, position, velocity, orientation, 0, 0)
 
     def update(self, step):
         if (self.target is not None and (type(self.target) == Vector or isinstance(self.target, Enemy))):
-            if (self.behaviourState == "Wander"):
+            if (self.position.distance(self.target) > 100):
+                self.behaviourState = "Wander"
+                self.target = self.position + self.velocity * 30
+            elif (self.behaviourState == "Wander"):
                 self.wander(step)
             elif (self.behaviourState == "Seek"):
                 self.seek(self.target, step)
@@ -128,7 +86,6 @@ class Humanoid(Enemy):
             elif (self.behaviourState == "Evade"):
                 print("Evading")
             elif(self.behaviourState == "Flee"):
-                #print("Flee")
                 self.flee(self.target, step)
     
     def wander(self, step):
@@ -143,7 +100,6 @@ class Humanoid(Enemy):
         self.seek(self.target, step)
 
     def seek(self, target, step):
-        #self.target = target
         if (isinstance(target, Enemy)):
             if (self.position.distance(target.position) < 10):
                 self.position = target.position
@@ -151,20 +107,12 @@ class Humanoid(Enemy):
             elif(self.position.distance(target.position) > CONST_VAL):
                 self.behaviourState = "Wander"
             else:
-                self.orientation = self.position.angleBetween(target.position)
+                self.orientation = 180 + self.position.angleBetween(target.position)
                 self.velocity = target.position - self.position
                 self.position += self.velocity.normalize() * step * self.maxSpeed
         elif(type(target) == Vector):
-            if (self.position.distance(target) < 10):
-                self.position = target
-                self.behaviourState = "Wander"
-            elif(self.position.distance(target) > CONST_VAL):
-                self.behaviourState = "Wander"
-            else:
-                self.velocity.rotate(self.orientation)
-                self.position += self.velocity.normalize() * step * self.maxSpeed
-        else:
-            print("Invalid Target")
+            self.velocity.rotate(self.orientation)
+            self.position += self.velocity.normalize() * step * self.maxSpeed
 
     def flee(self, target, step):
         if (type(target) == Vector):
@@ -181,22 +129,21 @@ class Humanoid(Enemy):
                 self.velocity = self.position - target.position
                 self.position += self.velocity.normalize() * step * self.maxSpeed
                 self.orientation = self.velocity.calculateVectorAngle()
-        else:
-            print("Invalid Target")
 
     def pursue(self, target, step):
         dir = target.position - self.position
         dst = dir.length()
         spd = self.maxSpeed
         prediction = 0
-        if (spd <= dst/self.maxPred):
+        if (spd <= dst / self.maxPred):
             prediction = self.maxPred
         else:
-            prediction = dst/spd
+            prediction = dst / spd
         self.targetPosition = target.position + (target.velocity * prediction)
-        self.seek(target.position + (target.velocity * prediction), step)
+        self.orientation = (((target.position + (target.velocity * prediction)) - self.position)).calculateVectorAngle()
+        self.seek(target.position + (target.velocity * prediction), step * 2)
 
-        if (self.position.distance(target.position) > 100):
+        if (self.position.distance(target.position) > CONST_VAL):
             self.behaviourState = "Wander"
 
     def registerUnitInRange(self, unit, style):
@@ -211,15 +158,15 @@ class Humanoid(Enemy):
                         print("Humanoid: Gunship in range, pursuing")
                     elif (type(unit) == Humanoid):
                         self.target = unit
-                        if (random.uniform(0, 1) > 1.1):
+                        if (random.uniform(0, 1) > 10):
                             self.behaviourState = "Seek"
                         else:
                             self.behaviourState = "Pursue"
             elif (style is "Flight"):
                 if (type(self.target) is Vector): #and type(unit) is not Humanoid):
                     self.target = unit
-                    self.behaviourState = "Flee"
-            print(self.behaviourState)
+                    #self.behaviourState = "Flee"
+                    self.behaviourState = "Wander"
 
 class Vehicle(Enemy):
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
@@ -265,7 +212,6 @@ class Vehicle(Enemy):
 
     #def update(self, step):
         #print("Vehicle Target: " + str(self.target))
-
 class Gunship(Enemy):
     def __init__(self, size, position, velocity, orientation, angAccel, angVel):
         spr = pygame.image.load("Gunship.png")
