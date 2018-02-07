@@ -8,12 +8,18 @@ CONST_FACTOR = 10
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
-Enemies = [Humanoid(16, Vector(200,100), Vector(1,0), 15, 0, 0)
-           ,Vehicle(16, Vector(200, 200), Vector(1,0), 75, 45, 45)
-           ,Gunship(16, Vector(300, 100), Vector(1,0), 45, 45, 45)
+Enemies =  [#Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
+           Humanoid(16, Vector(100, 300), Vector(1,0), 0, 0, 0)
+           ,Humanoid(16, Vector(700, 300), Vector(1,0), 180,0, 0)
+           #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
+           #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
+           #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
+           #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
+           #,Vehicle(16, Vector(200, 200), Vector(1,0), 75, 45, 45)
+           #,Gunship(16, Vector(300, 100), Vector(1,0), 45, 45, 45)
            ]
 
-Enemies[0].seek(Vector(300, 100), 1)
+#Enemies[0].seek(Vector(300, 100), 1)
 
 clock = time.Clock()
 while not done:
