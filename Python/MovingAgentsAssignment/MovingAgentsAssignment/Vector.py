@@ -10,7 +10,7 @@ class Vector(object):
         self.y = y
 
     def __str__(self):
-        return ("Vector: "+ str(self.x) + ", " + str(self.y))
+        return ("<Vector: "+ str(float(self.x)) + ", " + str(float(self.y)) + ">")
 
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)
