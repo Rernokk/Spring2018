@@ -47,7 +47,7 @@ class Enemy(object):
         x,y = self.drawRect.center
         self.drawRect = self.sprite.get_rect()
         self.drawRect.center = (x,y)
-        #pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y) * 60, 3)
+        pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y) * 20, 3)
         #pygame.draw.line(screen, (255, 0, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.ghostRotation(self.orientation).normalize().x, self.velocity.ghostRotation(self.orientation).normalize().y) * 60, 3)
         
         if (type(self.target) == Vector):
@@ -146,15 +146,34 @@ class Humanoid(Enemy):
 
     def pursue(self, target, step):
         if(isinstance(target, Enemy) and target.position.distance(self.position) <= CHASE_LIM):
-            self.tarDest = Vector(target.drawRect.center[0], target.drawRect.center[1]) + target.velocity
-            self.seek(target.position + target.velocity * target.maxSpeed, step)
+            dir = target.position - self.position
+            dist = dir.length()
+            spd = self.maxSpeed
+            pred = 0
+            if (spd <= dist / self.maxPred):
+                pred = self.maxPred
+            else :
+                pred = dist / self.maxPred
+
+            self.tarDest = Vector(target.drawRect.center[0], target.drawRect.center[1]) + target.velocity * pred
+            self.seek(target.position + target.velocity * pred, step)
         if (self.position.distance(target.position) > CHASE_LIM):
             self.behaviourState = "Wander"
         
     def evade(self, target, step):
         if(isinstance(target, Enemy) and target.position.distance(self.position) <= CHASE_LIM):
-            self.tarDest = Vector(target.drawRect.center[0], target.drawRect.center[1]) + target.velocity.normalize() * target.maxSpeed
-            self.flee(target.position + target.velocity.normalize() * target.maxSpeed, step)
+            dir = self.position - target.position
+            dist = dir.length()
+            spd = self.maxSpeed
+            pred = 0
+            if (spd <= dist / self.maxPred):
+                pred = self.maxPred
+            else :
+                pred = dist / self.maxPred
+
+
+            self.tarDest = Vector(target.drawRect.center[0], target.drawRect.center[1]) + target.velocity * pred
+            self.flee(target.position + target.velocity * pred, step)
         if (self.position.distance(target.position) > CHASE_LIM):
             self.behaviourState = "Wander"
 
