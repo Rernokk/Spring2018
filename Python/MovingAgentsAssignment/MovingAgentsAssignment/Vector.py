@@ -1,6 +1,8 @@
 import math
 import Enemy
+import numpy as np
 from Enemy import *
+from numpy import *
 
 class Vector(object):
     """description of class"""
@@ -48,38 +50,12 @@ class Vector(object):
         return math.degrees(math.atan2(self.y - other.y, self.x - other.x));
 
     def rotate(self, angle):
-        val = self.normalize()
-        length = math.sqrt(val.x ** 2 + val.y ** 2)
-        ang = math.atan2(val.y, val.x)
-        #ang = math.degrees(ang)
-        #if (self.y > 0 and self.x < 0):
-        #    ang += 180
-        #elif (self.y < 0 and self.x < 0):
-        #    ang += 180
-        #elif (self.y < 0 and self.x > 0):
-        #    ang += 360
-        
-        ang += angle
-        ang = math.radians(ang)
-        self.x = (length * math.cos(ang))
-        self.y = (length * math.sin(ang))
+        valX = self.x
+        valY = self.y
+        valAng = math.radians(angle)
+        self.x = valX * math.cos(valAng) - valY * math.sin(valAng)
+        self.y = valX * math.sin(valAng) + valY * math.cos(valAng)
         return
-
-    def ghostRotation(self, angle):
-        val = self.normalize()
-        length = math.sqrt(val.x ** 2 + val.y ** 2)
-        ang = math.atan2(val.y, val.x)
-        #ang = math.degrees(ang)
-        #if (self.y > 0 and self.x < 0):
-        #    ang += 180
-        #elif (self.y < 0 and self.x < 0):
-        #    ang += 180
-        #elif (self.y < 0 and self.x > 0):
-        #    ang += 360
-        
-        ang += angle
-        ang = math.radians(ang)
-        return Vector(length * math.cos(ang), length * math.sin(ang))
 
     def calculateVectorAngle(self):
         val = self.normalize()

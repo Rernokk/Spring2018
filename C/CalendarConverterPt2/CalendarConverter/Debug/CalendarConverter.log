@@ -1,0 +1,9 @@
+﻿  SmithSCh3Hw01.c
+c:\users\slyth\downloads\smithsch3hw01.c(179): warning C4013: 'getch' undefined; assuming extern returning int
+c:\users\slyth\downloads\smithsch3hw01.c(174): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\slyth\downloads\smithsch3hw01.c(194): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\downloads\smithsch3hw01.c(195): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\downloads\smithsch3hw01.c(277): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\downloads\smithsch3hw01.c(282): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\downloads\smithsch3hw01.c(290): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  CalendarConverter.vcxproj -> C:\Users\slyth\Desktop\Spring2018\C\CalendarConverter\Debug\CalendarConverter.exe

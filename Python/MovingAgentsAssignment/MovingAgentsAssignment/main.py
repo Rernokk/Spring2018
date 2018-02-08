@@ -9,8 +9,8 @@ pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
 Enemies =  [#Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
-           Humanoid(16, Vector(500, 100), Vector(1,0), 90, 0, 0)
-           ,Humanoid(16, Vector(300, 100), Vector(1,0),60,0, 0)
+           Humanoid(16, Vector(500, 100), Vector(1,0), 0, 0, 0)
+           ,Humanoid(16, Vector(300, 100), Vector(1,0), 0,0, 0)
            #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
            #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
            #,Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.uniform(16 * 2, 600 - (16 * 2))), Vector(random.uniform(-10, 10),random.uniform(-10, 10)), random.uniform(-180, 180), 0, 0)
@@ -20,6 +20,11 @@ Enemies =  [#Humanoid(16, Vector(random.uniform(16 * 2, 800 - (16 * 2)), random.
            ]
 
 #Enemies[0].seek(Vector(300, 100), 1)
+
+i = 0
+while (i < 8):
+    Enemies.append(Humanoid(16, Vector(random.uniform(32, 768), random.uniform(32, 568)), Vector(1,0), 0, 0, 0))
+    i+= 1
 
 clock = time.Clock()
 while not done:
@@ -34,13 +39,13 @@ while not done:
                 if (character.drawRect.colliderect(otherChar.drawRect)):
                     otherChar.updateByCollision(clock.get_time()/CONST_FACTOR)
                 
-                if (character.position.distance(otherChar.position) < 400):
+                if (character.position.distance(otherChar.position) < 100 and character.behaviourState == "Wander" and otherChar.behaviourState == "Wander"):
                     character.registerUnitInRange(otherChar, "Fight")
                     otherChar.registerUnitInRange(character, "Flight")
 
         character.update(clock.get_time()/CONST_FACTOR)
-        #if (character.position.x + character.size > 800 or character.position.x < 0 or character.position.y < 0 or character.position.y + character.size > 600):
-            #character.updateByCollision(clock.get_time()/CONST_FACTOR)
+        if (character.position.x + character.size > 800 or character.position.x < 0 or character.position.y < 0 or character.position.y + character.size > 600):
+            character.updateByCollision(clock.get_time()/CONST_FACTOR)
 
     screen.fill((100, 149, 237))
     for character in Enemies:
