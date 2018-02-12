@@ -50,7 +50,7 @@ class Enemy(object):
         pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.normalize().x, self.velocity.normalize().y) * 20, 3)
         #pygame.draw.line(screen, (255, 0, 0), self.drawRect.center, self.drawRect.center + pygame.math.Vector2(self.velocity.ghostRotation(self.orientation).normalize().x, self.velocity.ghostRotation(self.orientation).normalize().y) * 60, 3)
         
-        if (type(self.target) == Vector):
+        if (type(self.target) == Vector and self.target.distance(self.position) < CHASE_LIM):
             if (self.behaviourState == "Wander"):
                 pygame.draw.line(screen, (0, 255, 255), self.drawRect.center, pygame.math.Vector2((self.velocity.normalize().x * 30) + self.drawRect.center[0], (self.velocity.normalize().y * 30) + self.drawRect.center[1]), 2)
             if (self.behaviourState == "Seek"):
@@ -61,7 +61,7 @@ class Enemy(object):
                 pygame.draw.line(screen, (0, 0, 255), self.drawRect.center, pygame.math.Vector2((self.velocity.normalize().x * 30) + self.drawRect.center[0], (self.velocity.normalize().y * 30) + self.drawRect.center[1]), 2)
             elif (self.behaviourState == "Flee"):
                 pygame.draw.line(screen, (0, 255, 0), self.drawRect.center, pygame.math.Vector2((self.velocity.normalize().x * 30) + self.drawRect.center[0], (self.velocity.normalize().y * 30) + self.drawRect.center[1]), 2)
-        elif (isinstance(self.target, Enemy)):
+        elif (isinstance(self.target, Enemy)and self.target.position.distance(self.position) < CHASE_LIM):
             if (self.behaviourState == "Seek"):
                 pygame.draw.line(screen, (255, 255, 0), self.drawRect.center, (self.tarDest.x, self.tarDest.y), 2)
             elif (self.behaviourState == "Pursue"):
