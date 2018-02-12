@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalendarConverterPt2", "CalendarConverterPt2\CalendarConverterPt2.vcxproj", "{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Debug|x64.ActiveCfg = Debug|x64
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Debug|x64.Build.0 = Debug|x64
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Debug|x86.ActiveCfg = Debug|Win32
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Debug|x86.Build.0 = Debug|Win32
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Release|x64.ActiveCfg = Release|x64
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Release|x64.Build.0 = Release|x64
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Release|x86.ActiveCfg = Release|Win32
+		{FFFAD498-ED8B-4051-9A5F-6D937C4703AF}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCE06AAC-042F-47D7-9CA8-DCD4183A5E1E}
+	EndGlobalSection
+EndGlobal
