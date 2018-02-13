@@ -1,0 +1,20 @@
+﻿  main.c
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(142): warning C4013: 'getch' undefined; assuming extern returning int
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(61): warning C4101: 'm': unreferenced local variable
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(61): warning C4101: 'y': unreferenced local variable
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(61): warning C4101: 's': unreferenced local variable
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(61): warning C4101: 'h': unreferenced local variable
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(61): warning C4101: 'n': unreferenced local variable
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(61): warning C4101: 'd': unreferenced local variable
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(202): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(203): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(233): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(236): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(237): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(242): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(243): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(244): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(248): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(269): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\slyth\desktop\spring2018\c\calendarconverterpt2\calendarconverterpt2\calendarconverterpt2\main.c(266): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  CalendarConverterPt2.vcxproj -> C:\Users\slyth\Desktop\Spring2018\C\CalendarConverterPt2\CalendarConverterPt2\x64\Debug\CalendarConverterPt2.exe
