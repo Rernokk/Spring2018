@@ -1,28 +1,91 @@
+import time as t
 import pygame
 import Nodes
+import queue as q
 from pygame import *
 from Nodes import *
+from queue import *
+
+
+def BreadthFirst(nodeList, startNode, endNode):
+    #path = []
+    #toVisit = [startNode]
+    path = []
+    toVisit = [startNode]
+    for nodeRow in nodeList:
+        for node in nodeRow:
+            node.visited = False
+            node.backPath = 0
+
+    while (len(toVisit) > 0):
+        curr = toVisit.pop(0)
+        curr.visited = True
+        path.append(curr)
+        for neighbor in curr.neighbors:
+            if(neighbor.visited == False):
+                toVisit.append(neighbor)
+                neighbor.visited = True
+                neighbor.backNode = curr
+                if (neighbor is endNode):
+                    path.append(neighbor)
+                    return path
+    return path
+
+def drawPath(surf, pattern, stepVal):
+    i = 0
+    while (i < stepVal-1):
+        pygame.draw.line(surf, (255,0,0), pattern[i].position.VecToPygame(), pattern[i+1].position.VecToPygame(), 3)
+        i+=1
 
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
-Nodes = []
 
-i = 120
-while (i > 0):
-    Nodes.append(Node(Vector(random.uniform(25, 725), random.uniform(25, 525))))
-    i-=1
+widthLim = 40
+heightLim = 30
+Nodes = [[]]
+#Nodes[i][j] = (Node(Vector((800 / widthLim) * i - (800 / (2 * widthLim)), (600 / heightLim) * j - (600 / (2 * heightLim)))))
 
-for aNode in Nodes:
-    for anotherNode in Nodes:
-        if (aNode != anotherNode):
-            if (anotherNode.position.distance(aNode.position) < 20):
-                aNode.shiftNode(aNode.position - anotherNode.position, 120)
-            if (anotherNode.position.distance(aNode.position) < 125 and aNode not in anotherNode.neighbors):
-                aNode.neighbors.append(anotherNode)
+i = 1
+while (i <= widthLim):
+    j = heightLim
+    while (j > 0):
+        Nodes[i-1].append(Node(Vector((800 / widthLim) * i - (800 / (2 * widthLim)), (600 / heightLim) * j - (600 / (2 * heightLim))), i, j))
+        j-=1
+    i+= 1
+    Nodes.append([])
 
-rootNode = Nodes[random.randint(0, 120)]
+#Nodes[0][0].col = (0,0,0)
 
+leftX = (800 / widthLim)
+rightX = (800 - (800 / (widthLim)))
+topY = (600 / heightLim)
+bottomY = (600 - (600 / heightLim))
+
+timeStart = t.time()
+i = 0
+while (i < widthLim):
+    j = 0
+    while (j < heightLim):
+        k = -1
+        while (k <= 1):
+            l = -1
+            while (l <= 1):
+                if ((k != 0 or l != 0) and i + k >= 0 and i + k < widthLim and j + l >= 0 and j + l < heightLim):
+                    Nodes[i][j].neighbors.append(Nodes[i + k][j + l])
+                l+=1
+            k+=1
+        j+=1
+    i+= 1
+print("Time taken: " + str(t.time() - timeStart))
+
+#path = BreadthFirst(Nodes, Nodes[2][2], Nodes[0][7])
+#print(len(path))
+i = 0
+j = 0
+stepVal = 0
+tempPath = []
+toVisit = [Nodes[20][15]]
 clock = time.Clock()
 while not done:
     clock.tick(144)
@@ -30,11 +93,29 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     
-    #Update 
+    #Update
+
+    #Debug Coloring
+    #Nodes[i][j].col = (255,0,0)
+    #j+=1
+    #if (j == heightLim):
+    #    i += 1
+    #    j = 0
+
 
     #Drawing
     screen.fill((100, 149, 237))
-    for node in Nodes:
-        node.draw(screen)
-    rootNode.flareSelf(screen)
+    for row in Nodes:
+        for node in row:
+            if (node.visited == True):
+                node.col = (255, 0,0)
+            #node.draw(screen)
+
+    path = BreadthFirst(Nodes, Nodes[20][15], Nodes[0][7])
+
+    drawPath(screen, path, stepVal)
+    stepVal += 1
+    if (stepVal > len(path)):
+        stepVal = len(path)
+    #rootNode.flareSelf(screen)
     pygame.display.flip()
