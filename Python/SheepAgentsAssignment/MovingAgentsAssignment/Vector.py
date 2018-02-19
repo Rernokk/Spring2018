@@ -63,3 +63,9 @@ class Vector(object):
 
     def convertToPy(self):
         return pygame.math.Vector2(self.x, self.y)
+    
+    def average(self, count):
+        if (count > 0):
+            return Vector(self.x/count, self.y/count)
+        else:
+            return self

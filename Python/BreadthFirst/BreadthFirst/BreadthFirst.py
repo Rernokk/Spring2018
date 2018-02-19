@@ -6,29 +6,33 @@ from pygame import *
 from Nodes import *
 from queue import *
 
-
-def BreadthFirst(nodeList, startNode, endNode):
+def BreadthFirst(nodeList, startNode, endNode, path, toVisit, pause):
     #path = []
     #toVisit = [startNode]
-    path = []
-    toVisit = [startNode]
-    for nodeRow in nodeList:
+    for nodeRow in Nodes:
         for node in nodeRow:
             node.visited = False
             node.backPath = 0
 
     while (len(toVisit) > 0):
+        if (pause):
+            print(len(toVisit))
+            return path
         curr = toVisit.pop(0)
         curr.visited = True
         path.append(curr)
+        if (len(toVisit) == 0):
+            print("Finished")
         for neighbor in curr.neighbors:
-            if(neighbor.visited == False):
-                toVisit.append(neighbor)
+            if(not neighbor.visited):
+                if (neighbor not in toVisit):
+                    toVisit.append(neighbor)
                 neighbor.visited = True
                 neighbor.backNode = curr
-                if (neighbor is endNode):
+                if (neighbor == endNode):
                     path.append(neighbor)
                     return path
+        pause = True
     return path
 
 def drawPath(surf, pattern, stepVal):
@@ -41,8 +45,8 @@ pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
 
-widthLim = 40
-heightLim = 30
+widthLim = 20
+heightLim = 15
 Nodes = [[]]
 #Nodes[i][j] = (Node(Vector((800 / widthLim) * i - (800 / (2 * widthLim)), (600 / heightLim) * j - (600 / (2 * heightLim)))))
 
@@ -84,8 +88,8 @@ print("Time taken: " + str(t.time() - timeStart))
 i = 0
 j = 0
 stepVal = 0
-tempPath = []
-toVisit = [Nodes[20][15]]
+path = []
+toVisit = [Nodes[10][9]]
 clock = time.Clock()
 while not done:
     clock.tick(144)
@@ -109,9 +113,10 @@ while not done:
         for node in row:
             if (node.visited == True):
                 node.col = (255, 0,0)
-            #node.draw(screen)
+            node.draw(screen)
 
-    path = BreadthFirst(Nodes, Nodes[20][15], Nodes[0][7])
+    pause = False
+    path = BreadthFirst(Nodes, Nodes[10][9], Nodes[0][7], path, toVisit, pause)
 
     drawPath(screen, path, stepVal)
     stepVal += 1

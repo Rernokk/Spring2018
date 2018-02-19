@@ -30,6 +30,9 @@
     <Compile Include="Vector.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Wall.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.6-32" />

@@ -45,8 +45,8 @@ class Node (object):
         self.backNode = 0
 
     def draw(self, surf):
-        for neighbor in self.neighbors:
-            pygame.draw.line(surf, (255,255,255), self.position.VecToPygame(), neighbor.position.VecToPygame(), 1)
+        #for neighbor in self.neighbors:
+            #pygame.draw.line(surf, (255,255,255), self.position.VecToPygame(), neighbor.position.VecToPygame(), 1)
         pygame.draw.circle(surf, self.col, (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 4, 0)
 
     def shiftNode (self, dir, factor):
