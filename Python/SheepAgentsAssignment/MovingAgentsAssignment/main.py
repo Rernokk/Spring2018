@@ -33,11 +33,11 @@ done = False
 SheepHerd = []
 j = 0
 while (j < 16):
-    SheepHerd.append(SleepySheepy(16, Vector(random.uniform(500, 700), random.uniform(400, 500)), 0, 0, random.uniform(180, 180), 180, 0))
+    SheepHerd.append(SleepySheepy(16, Vector(random.uniform(100, 700), random.uniform(100, 150)), 0, 0, random.uniform(0, 90), 180, 0))
     j+=1
 
 #Pen
-CenterPoint = (200, 150)
+CenterPoint = (400, 300)
 PenHeight = 150
 PenWidth = 200
 Pen = Wall([Vector(CenterPoint[0] - int(PenWidth/2), CenterPoint[1] + PenHeight), Vector(CenterPoint[0] - PenWidth, CenterPoint[1] + PenHeight), Vector(CenterPoint[0] - PenWidth, CenterPoint[1] - PenHeight), Vector(CenterPoint[0] + PenWidth, CenterPoint[1] - PenHeight), Vector(CenterPoint[0] + PenWidth, CenterPoint[1] + PenHeight), Vector(CenterPoint[0] + int(PenWidth/2), CenterPoint[1] + PenHeight)], 3)
@@ -78,7 +78,6 @@ while not done:
 
 
     screen.fill((100, 149, 237))
-    Wolf.update(clock.get_time() * .001)
     for character in SheepHerd:
         tempPos = character.position
         tempOri = character.orientation

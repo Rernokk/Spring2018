@@ -241,7 +241,8 @@ class SleepySheepy(Enemy):
         for sheep in self.nearby:
             avg += sheep.position
             if (sheep.position.distance(self.position) < 32):
-                sheep.position += (sheep.position - self.position) * step * (sheep.position.distance(self.position)/32.0)
+                if (sheep.behaviourState != "Flee"):
+                    sheep.position += (sheep.position - self.position) * step * (sheep.position.distance(self.position)/32.0)
                 self.position -= (sheep.position - self.position) * step * (sheep.position.distance(self.position)/32.0)
             avgVel += sheep.velocity
             
@@ -282,8 +283,8 @@ class SleepySheepy(Enemy):
     def flee(self, target, step):
         self.behaviourState = "Flee"
         if(type(target) == Vector and target.distance(self.position) <= CHASE_LIM):
-            val = Enemy.checkSign(self.velocity.calculateVectorAngle()) * self.angVel * step if math.fabs((self.position - target).normalize().calculateVectorAngle()) >= self.angVel else Enemy.checkSign(self.velocity.calculateVectorAngle()) * self.angVel * step
-            self.velocity.rotate(val)
+            val = Enemy.checkSign(self.position.x - target.x) * self.angVel * step if math.fabs((self.position - target).normalize().calculateVectorAngle()) >= self.angVel else Enemy.checkSign(self.velocity.calculateVectorAngle()) * self.angVel * step
+            self.velocity.rotate(Enemy.checkSign((target - self.position).calculateVectorAngle()) * self.angVel * step)
             if (self.behaviourState != "Evade"):
                 self.tarDest = target
             self.position += self.velocity.normalize() * step * self.CONST_WANDER_SPEED
