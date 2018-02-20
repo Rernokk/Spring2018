@@ -9,10 +9,19 @@ pygame.init()
 screen = pygame.display.set_mode((800,600))
 
 #Initializers
-Sheep = [Sheepy(screen,(400,300), (-1,0))]
+#Sheep = [Sheepy(screen,(400,300), (-1,0))]
+Sheep = []
 indexer = 1
 while (indexer <= 15):
-	Sheep.append(Sheepy(screen, (400 + r.uniform(-400, 400), 300 + r.uniform(-250,250)), (0, r.uniform(0,1))))
+	tempSheep = Sheepy(screen, (400 + r.uniform(-400, 400), 300 + r.uniform(-250,250)), (0, r.uniform(0,1)))
+	newX = tempSheep.position[0]
+	newY = tempSheep.position[1]
+	while (newX > 180 and newX < 620):
+		newX = 400+r.uniform(-400, 400)
+		while (newY < 130 and newY > 470):
+			newY = 300 + r.uniform(-300, 300)
+	tempSheep.position = (newX, newY)
+	Sheep.append(tempSheep)
 	indexer += 1
 
 #Pen
