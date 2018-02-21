@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Dog.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="QuickMaths.py">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Circle.png" />
+    <Content Include="Dog.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

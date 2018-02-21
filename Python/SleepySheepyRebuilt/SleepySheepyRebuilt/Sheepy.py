@@ -49,6 +49,7 @@ class Sheepy(object):
 		coheasion = self.computeCohesion(step, sheepList)
 		separation = self.computeSeparation(step,sheepList, penList)
 		rot = QuickMaths.getNormalized((align[0] + coheasion[0] + separation[0]*10, align[1] + coheasion[1] + separation[1]*10))
+		#rot = QuickMaths.getNormalized((align[0] + coheasion[0] + separation[0]*10, align[1] + coheasion[1] + separation[1]*10))
 		if (rot == (0,0)):
 			rot = self.velocity
 		deg = math.degrees(math.atan2(self.velocity[0], self.velocity[1]) - math.atan2(rot[0], rot[1]))

@@ -24,3 +24,16 @@ class QuickMaths(object):
 	@staticmethod
 	def subTuples(vecA, vecB):
 		return(vecA[0] - vecB[0], vecA[1] - vecB[1])
+
+	@staticmethod
+	def findClosest(tar, collection):
+		if (len(collection) > 0):
+			temp = collection[0]
+			i = 1
+			while (i < len(collection)-1):
+				print(collection[i].position)
+				if (QuickMaths.getMagnitude(tar.position, temp.position) > QuickMaths.getMagnitude(tar.position, collection[i].position)):
+					temp = collection
+				i+=1
+			return temp
+		return tar

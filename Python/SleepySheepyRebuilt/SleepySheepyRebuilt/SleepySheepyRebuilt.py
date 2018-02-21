@@ -1,9 +1,13 @@
 import pygame
 import Sheepy
+import Dog
 import random as r
+import QuickMaths as qm
 from pygame import *
 from Sheepy import *
 from random import *
+from Dog import *
+from QuickMaths import *
 
 pygame.init()
 screen = pygame.display.set_mode((800,600))
@@ -23,6 +27,9 @@ while (indexer <= 15):
 	tempSheep.position = (newX, newY)
 	Sheep.append(tempSheep)
 	indexer += 1
+
+#Doggy
+dog = Dog(32, (400, 300), (1,0), 0, 0, 0)
 
 #Pen
 Pen = []
@@ -49,8 +56,10 @@ while (not done):
 	screen.fill((100,149,237))
 	for sheep in Sheep:
 		sheep.update(clock.get_time() * .001, Sheep, Pen)
+	#dog.update(clock.get_time() * .001, Sheep)
 	for sheep in Sheep:
 		sheep.draw()
+	#dog.draw(screen)
 	for wall in Pen:
 		screen.blit(wall[0], wall[1])
 	pygame.display.flip()
