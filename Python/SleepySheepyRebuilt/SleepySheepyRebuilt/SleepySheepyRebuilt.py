@@ -29,14 +29,18 @@ while (indexer <= 15):
 	indexer += 1
 
 #Doggy
-dog = Dog(32, (400, 300), (1,0), 0, 0, 0)
+dog = Dog(32, (10,10), (1,0), 0, 0, 0)
+i = 0
+while (i < len(Sheep)):
+	Sheep[i].dogRef = dog
+	i+=1
 
 #Pen
 Pen = []
 i = -20
 while (i <= 20):
 	Pen.append([pygame.Surface((10,10)), (400+10*i, 150)])
-	if (i <=-5 or i > 5):
+	if (i <-6 or i > 6):
 		Pen.append([pygame.Surface((10,10)), (400+10*i, 450)])
 	i += 1
 i = 0
@@ -55,11 +59,11 @@ while (not done):
 			done = True
 	screen.fill((100,149,237))
 	for sheep in Sheep:
-		sheep.update(clock.get_time() * .001, Sheep, Pen)
-	#dog.update(clock.get_time() * .001, Sheep)
+		sheep.update(clock.get_time() * .001, Sheep, Pen, dog)
+	dog.update(clock.get_time() * .001, Sheep)
 	for sheep in Sheep:
 		sheep.draw()
-	#dog.draw(screen)
+	dog.draw(screen)
 	for wall in Pen:
 		screen.blit(wall[0], wall[1])
 	pygame.display.flip()

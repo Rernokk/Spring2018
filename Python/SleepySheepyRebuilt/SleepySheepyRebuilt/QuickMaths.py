@@ -8,6 +8,10 @@ class QuickMaths(object):
 		if (magnitude == 0):
 			return (0,0)
 		return (vector[0]/magnitude, vector[1]/magnitude)
+	
+	@staticmethod
+	def getMagnitudeIndividual(vector):
+		return math.sqrt((vector[0])**2 + (vector[1])**2)
 
 	@staticmethod
 	def getMagnitude(vecA, vecB):
@@ -27,12 +31,13 @@ class QuickMaths(object):
 
 	@staticmethod
 	def findClosest(tar, collection):
+		print(collection)
 		if (len(collection) > 0):
 			temp = collection[0]
 			i = 1
 			while (i < len(collection)-1):
-				print(collection[i].position)
-				if (QuickMaths.getMagnitude(tar.position, temp.position) > QuickMaths.getMagnitude(tar.position, collection[i].position)):
+				print("Got to ",i," before I broke.")
+				if (QuickMaths.getMagnitude(tar.position, temp.position) > QuickMaths.getMagnitude(tar.position, (collection[i]).position)):
 					temp = collection
 				i+=1
 			return temp

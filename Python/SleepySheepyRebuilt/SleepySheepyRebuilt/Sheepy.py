@@ -27,9 +27,12 @@ class Sheepy(object):
 		self.orientation = r.uniform(-180, 180)
 		self.velocity = QuickMaths.getNormalized((r.uniform(-1, 1), r.uniform(-1,1)))
 		self.initVel = (self.velocity[0], self.velocity[1])
-		self.maxLinVel = 20
-		self.angVelocity = 3
+		self.maxLinVel = 30
+		self.currVel = self.maxLinVel/4
+		self.angVelocity = 15
 		self.isInPen = False
+		self.state = "Wander"
+		self.drawRect = pygame.Rect(self.position[0], self.position[1], self.original_Sprite.get_width(), self.original_Sprite.get_height())
 
 	def draw(self):
 		self.drawRect = pygame.Rect(self.position[0], self.position[1], self.original_Sprite.get_width(), self.original_Sprite.get_height())
@@ -38,18 +41,34 @@ class Sheepy(object):
 		self.drawRect = self.sprite.get_rect()
 		self.drawRect.center = (x,y)
 		self.screen.blit(self.sprite, (self.position[0], self.position[1]))
-		pygame.draw.line(self.screen, (255,0,0), self.drawRect.center, (self.drawRect.center[0] + self.velocity[0] * self.maxLinVel, self.drawRect.center[1] +  self.velocity[1] * self.maxLinVel), 2)
-		#if (self.drawRect.center[0] < 0 or self.drawRect.center[0] > 800 or self.drawRect.center[1] < 0 or self.drawRect.center[1] > 600):
-			#pygame.draw.line(self.screen, (255,255,255), self.drawRect.center, (400, 300))
+		pygame.draw.line(self.screen, (255,0,0), self.drawRect.center, (self.drawRect.center[0] + self.velocity[0] * self.currVel, self.drawRect.center[1] +  self.velocity[1] * self.currVel), 2)
 		if (self.isInPen):
-			pygame.draw.circle(self.screen, (255,0,0), self.drawRect.center, 3)
+			pygame.draw.circle(self.screen, (255,0,0), self.drawRect.center, 10)
 
-	def update(self, step, sheepList, penList):
+	def update(self, step, sheepList, penList, dogRef):
+		if (QuickMaths.getMagnitude(self.dogRef.position, self.position) < Sheepy.CONST_SHEEP_LENGTH * 5):
+			self.currVel += (self.maxLinVel/3)* step
+			self.state = "Flee"
+			if (self.currVel > self.maxLinVel):
+				self.currVel = self.maxLinVel
+		elif (QuickMaths.getMagnitude(self.dogRef.position, self.position) < Sheepy.CONST_SHEEP_LENGTH * 10):
+			self.currVel += (self.maxLinVel/3) * step
+			self.state = "Flee"
+			if (self.currVel > self.maxLinVel/2):
+				self.currVel = self.maxLinVel/2
+		else:
+			self.currVel -= (self.maxLinVel/3)* step
+			self.state = "Wander"
+			if (self.currVel < self.maxLinVel/4):
+				self.currVel = self.maxLinVel/4
+		
+		if (self.state == "Flee"):
+			self.flee(dogRef, step)
+
 		align = self.computeAlignment(step, sheepList)
 		coheasion = self.computeCohesion(step, sheepList)
 		separation = self.computeSeparation(step,sheepList, penList)
-		rot = QuickMaths.getNormalized((align[0] + coheasion[0] + separation[0]*10, align[1] + coheasion[1] + separation[1]*10))
-		#rot = QuickMaths.getNormalized((align[0] + coheasion[0] + separation[0]*10, align[1] + coheasion[1] + separation[1]*10))
+		rot = QuickMaths.getNormalized((align[0] + coheasion[0] + separation[0]*20, align[1] + coheasion[1] + separation[1]*20))
 		if (rot == (0,0)):
 			rot = self.velocity
 		deg = math.degrees(math.atan2(self.velocity[0], self.velocity[1]) - math.atan2(rot[0], rot[1]))
@@ -59,7 +78,7 @@ class Sheepy(object):
 		else:
 			self.velocity = rot
 		self.velocity = QuickMaths.getNormalized(self.velocity)
-		self.position = QuickMaths.addTuples(self.position, QuickMaths.getScaled(self.velocity, self.maxLinVel * step))
+		self.position = QuickMaths.addTuples(self.position, QuickMaths.getScaled(self.velocity, self.currVel * step))
 		
 		if (self.position[0] < 600 and self.position[0] > 200 and self.position[1] < 450 and self.position[1] > 150):
 			self.isInPen = True
@@ -149,3 +168,8 @@ class Sheepy(object):
 			return (0,0)
 		else:
 			return QuickMaths.getNormalized(QuickMaths.getScaled(QuickMaths.getScaled(netSeparation, 1/count), -1))
+
+		
+	def flee(self, target, step):
+		self.velocity = QuickMaths.subTuples(self.position, target.position)
+		self.position = QuickMaths.addTuples(self.position, QuickMaths.getScaled(QuickMaths.getNormalized(self.velocity), step * self.currVel))
