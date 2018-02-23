@@ -31,14 +31,12 @@ class QuickMaths(object):
 
 	@staticmethod
 	def findClosest(tar, collection):
-		print(collection)
 		if (len(collection) > 0):
 			temp = collection[0]
 			i = 1
 			while (i < len(collection)-1):
-				print("Got to ",i," before I broke.")
-				if (QuickMaths.getMagnitude(tar.position, temp.position) > QuickMaths.getMagnitude(tar.position, (collection[i]).position)):
-					temp = collection
+				if (QuickMaths.getMagnitude(tar.position, temp.position) > QuickMaths.getMagnitude(tar.position, (collection[i]).position) and collection[i].isInPen == False):
+					temp = collection[i]
 				i+=1
 			return temp
 		return tar

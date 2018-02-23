@@ -29,7 +29,7 @@ while (indexer <= 15):
 	indexer += 1
 
 #Doggy
-dog = Dog(32, (10,10), (1,0), 0, 0, 0)
+dog = Dog(32, (10,300), (1,0), 0, 0, 0)
 i = 0
 while (i < len(Sheep)):
 	Sheep[i].dogRef = dog

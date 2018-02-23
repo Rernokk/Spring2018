@@ -15,7 +15,7 @@ class Dog(object):
 		self.original_Sprite = spr.convert_alpha()
 		self.behaviourState = "Pursue"
 		self.position = position
-		self.maxSpeed = 100
+		self.maxSpeed = 60
 		self.maxPred = 120
 		#self.wanderTimer = 0
 		self.targetCounter = 60
@@ -27,9 +27,8 @@ class Dog(object):
 		self.orientation = math.degrees(math.atan2(self.velocity[0], self.velocity[1]))
 		#if (self.behaviourState == "Wander"):
 		#	self.wander(step)
-		if (self.target == (0,0) or self.targetCounter >= 600):
-			#self.target = QuickMaths.findClosest(self, sheepList)
-			self.target = sheepList[r.randint(0, len(sheepList)-1)]
+		if (self.target == (0,0) or self.targetCounter >= 600 or self.target.isInPen == True):
+			self.target = QuickMaths.findClosest(self, sheepList)
 			self.targetCounter = 0
 		else:
 			self.targetCounter += 1
@@ -59,8 +58,8 @@ class Dog(object):
 		if (spd <= dist / self.maxPred):
 			pred = self.maxPred
 		else :
-			pred = dist / self.maxPred/4
-		pos = QuickMaths.addTuples(target.position, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples(target.drawRect.center, (400,455))), pred * target.maxLinVel))
+			pred = dist / self.maxPred
+		pos = QuickMaths.addTuples(target.position, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples(target.drawRect.center, (400,455))), pred * target.currVel))
 		self.drawTar = pos
 		self.seek(pos, step)
 			

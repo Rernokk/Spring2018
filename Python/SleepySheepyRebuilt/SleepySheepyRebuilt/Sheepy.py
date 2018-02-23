@@ -14,9 +14,9 @@ class Sheepy(object):
 	CONST_SHEEP_MIN = 2 * CONST_SHEEP_LENGTH
 	CONST_SHEEP_MAX = 5 * CONST_SHEEP_LENGTH
 	CONST_SHEEP_NEIGHBOR_RANGE = 50
-	CONST_WALL_RANGE = 60
+	CONST_WALL_RANGE = 40
 	CONST_WALL_WEIGHT = 20
-	CONST_PEN_RANGE = 60
+	CONST_PEN_RANGE = 30
 
 	def __init__(self, screen, pos, vel):
 		self.name = ""
@@ -27,7 +27,7 @@ class Sheepy(object):
 		self.orientation = r.uniform(-180, 180)
 		self.velocity = QuickMaths.getNormalized((r.uniform(-1, 1), r.uniform(-1,1)))
 		self.initVel = (self.velocity[0], self.velocity[1])
-		self.maxLinVel = 30
+		self.maxLinVel = 65
 		self.currVel = self.maxLinVel/4
 		self.angVelocity = 15
 		self.isInPen = False
@@ -46,12 +46,12 @@ class Sheepy(object):
 			pygame.draw.circle(self.screen, (255,0,0), self.drawRect.center, 10)
 
 	def update(self, step, sheepList, penList, dogRef):
-		if (QuickMaths.getMagnitude(self.dogRef.position, self.position) < Sheepy.CONST_SHEEP_LENGTH * 5):
+		if (QuickMaths.getMagnitude(self.dogRef.position, self.position) < Sheepy.CONST_SHEEP_LENGTH * 5 and self.isInPen == False):
 			self.currVel += (self.maxLinVel/3)* step
 			self.state = "Flee"
 			if (self.currVel > self.maxLinVel):
 				self.currVel = self.maxLinVel
-		elif (QuickMaths.getMagnitude(self.dogRef.position, self.position) < Sheepy.CONST_SHEEP_LENGTH * 10):
+		elif (QuickMaths.getMagnitude(self.dogRef.position, self.position) < Sheepy.CONST_SHEEP_LENGTH * 10 and self.isInPen == False):
 			self.currVel += (self.maxLinVel/3) * step
 			self.state = "Flee"
 			if (self.currVel > self.maxLinVel/2):
@@ -62,12 +62,12 @@ class Sheepy(object):
 			if (self.currVel < self.maxLinVel/4):
 				self.currVel = self.maxLinVel/4
 		
-		if (self.state == "Flee"):
-			self.flee(dogRef, step)
+		#if (self.state == "Flee"):
+		#	self.flee(dogRef, step)
 
 		align = self.computeAlignment(step, sheepList)
 		coheasion = self.computeCohesion(step, sheepList)
-		separation = self.computeSeparation(step,sheepList, penList)
+		separation = self.computeSeparation(step,sheepList, penList, dogRef)
 		rot = QuickMaths.getNormalized((align[0] + coheasion[0] + separation[0]*20, align[1] + coheasion[1] + separation[1]*20))
 		if (rot == (0,0)):
 			rot = self.velocity
@@ -132,37 +132,41 @@ class Sheepy(object):
 			v = QuickMaths.subTuples(v, self.position)
 			return QuickMaths.getNormalized(v)
 
-	def computeSeparation(self, step, sheepList, penList):
+	def computeSeparation(self, step, sheepList, penList, dog):
 		closeSheep = []
 		netSeparation = (0,0)
 		for sheep in sheepList:
 			if (sheep != self and self.getDistToSheep(sheep) < Sheepy.CONST_SHEEP_NEIGHBOR_RANGE*.75):
-				netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getNormalized(QuickMaths.subTuples(sheep.position, self.position)))
+				netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples(sheep.position, self.position)), 10))
 				closeSheep.append(sheep)
 		
 		count = len(closeSheep)
 		for wall in penList:
 			if (QuickMaths.getMagnitude(self.position, wall[1]) < Sheepy.CONST_PEN_RANGE):
 				pygame.draw.line(self.screen,(255,0,0), self.position, wall[1])
-				netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getNormalized(QuickMaths.subTuples(wall[1], self.position)))
+				netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples(wall[1], self.position)), Sheepy.CONST_PEN_RANGE - QuickMaths.getMagnitude(self.position, wall[1])))
 				count+=1
+		if (QuickMaths.getMagnitude(self.position, dog.position) < Sheepy.CONST_SHEEP_LENGTH * 10):
+			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples(dog.position, self.position)), 25))
+			count+=1
 
+		#Sheep Avoid Screen Boundaries (Or not apparently)
 		if (self.position[1] < Sheepy.CONST_WALL_RANGE and self.position[1] > 0):
 			#pygame.draw.line(self.screen,(255,0,0), self.position, (self.position[0], 0))
-			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getNormalized(QuickMaths.subTuples((self.position[0], 0), self.position)))
+			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples((self.position[0], 0), self.position)), 150))
 			count+=1
-		if (600 - self.position[1] < Sheepy.CONST_WALL_RANGE and self.position[1] < 600):
+		if (600 - (self.position[1]+self.original_Sprite.get_height()) < Sheepy.CONST_WALL_RANGE and self.position[1] < 600):
 			#pygame.draw.line(self.screen,(255,255,0), self.position, ((self.position[0], 600)))
 			count+=1
-			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getNormalized(QuickMaths.subTuples((self.position[0], 600), self.position)))
+			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples((self.position[0], 600), self.position)), 150))
 		if (self.position[0] < Sheepy.CONST_WALL_RANGE and self.position[0] > 0):
 			#pygame.draw.line(self.screen,(255,0,0), self.position, (0, self.position[1]))
 			count+=1
-			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getNormalized(QuickMaths.subTuples((0, self.position[1]),self.position)))
+			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples((0, self.position[1]),self.position)), 150))
 		if (800 - self.position[0] < Sheepy.CONST_WALL_RANGE and self.position[0] < 800):
 			#pygame.draw.line(self.screen,(255,0,0), self.position, (800, self.position[1]))
 			count+=1
-			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getNormalized(QuickMaths.subTuples((800, self.position[1]), self.position)))
+			netSeparation = QuickMaths.addTuples(netSeparation, QuickMaths.getScaled(QuickMaths.getNormalized(QuickMaths.subTuples((800, self.position[1]), self.position)), 150))
 
 		if (count == 0):
 			return (0,0)
