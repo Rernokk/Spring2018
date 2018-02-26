@@ -43,10 +43,8 @@ def DijkstrasSearch(nodeList, startNode, endNode):
 		for node in nodeRow:
 			node.visited = False
 			node.backNode = 0
-			node.costSoFar = 2000
+			node.costSoFar = 3000000
 			
-	startNode.col = (255,0,0)
-	endNode.col = (0,0,0)
 	startNode.costSoFar = 0
 	curr = startNode
 	curr.backNode = 0
@@ -54,27 +52,30 @@ def DijkstrasSearch(nodeList, startNode, endNode):
 	while (len(toVisit) > 0):
 		curr = toVisit.pop(0)
 		for neighbor in curr.neighbors:
-			currDist = curr.position.distance(neighbor[0].position)
-			if(neighbor[0].visited==False):
-				if (neighbor[0] not in toVisit):
-					toVisit.append(neighbor[0])
+			currDist = neighbor[1]#curr.position.distance(neighbor[0].position)
+			if(neighbor[0].visited == False):
+				#if (neighbor[0] not in toVisit):
+				toVisit.append(neighbor[0])
 				neighbor[0].visited = True
 				neighbor[0].backNode = curr
 				neighbor[0].costSoFar = currDist + curr.costSoFar
 				if (neighbor[0] == endNode):
-					print("Found end node, Cost: ", curr.costSoFar)
-					total = curr.costSoFar
+					total = neighbor[0].costSoFar
 					startNode.backNode = 0
 					path.append(neighbor[0])
 					while (curr != 0):
 						path.append(curr)
 						curr = curr.backNode
+					startNode.col = (255,0,0)
+					endNode.col = (0,0,0)
 					return path, total
-		else:
-			if (curr.costSoFar + currDist < neighbor[0].costSoFar):
-				neighbor[0].costSoFar = curr.costSoFar + currDist
-				neighbor[0].backNode = curr
-	return path
+			else:
+				#print("Found Visited, Current: ",curr.costSoFar + currDist, ", neighbor: ", neighbor[0].costSoFar)
+				if (curr.costSoFar + currDist <= neighbor[0].costSoFar):
+					print("Changing Paths, More expensive")
+					neighbor[0].costSoFar = curr.costSoFar + currDist
+					neighbor[0].backNode = curr
+	return path, 0
 
 def drawPath(surf, pattern):
 	i = 0
@@ -106,10 +107,9 @@ leftX = (800 / widthLim)
 rightX = (800 - (800 / (widthLim)))
 topY = (600 / heightLim)
 bottomY = (600 - (600 / heightLim))
-
 timeStart = t.time()
 i = 0
-edgeWeight = 1
+edgeWeight = random.uniform(0, 1000)
 while (i < widthLim):
 	j = 0
 	while (j < heightLim):
@@ -118,20 +118,26 @@ while (i < widthLim):
 			l = -1
 			while (l <= 1):
 				if ((k != 0 or l != 0) and i + k >= 0 and i + k < widthLim and j + l >= 0 and j + l < heightLim):
-					r = random.randint(0, 5120)
-					NodeList[i][j].neighbors.append([NodeList[i + k][j + l], r])
+					#if (i+k == 0 or j+l == 0 or i+k == widthLim-1 or j+l  == heightLim-1):
+					#	edgeWeight = 1
+					#else:
+					edgeWeight = random.uniform(1, 256)
+					NodeList[i][j].neighbors.append([NodeList[i + k][j + l], edgeWeight])
 				l+=1
 			k+=1
 		j+=1
 	i+= 1
 print("Time taken: " + str(t.time() - timeStart))
 
+
 timeStart = t.time()
-path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[14][14])
+path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[15][14])
 print("Dijkstra's Computation: ", str(t.time() - timeStart))
+print("Found end node, Cost: ", totalCost)
 
 for n in path:
-	print(n.indX, ", ", n.indY ,", ",n.costSoFar)
+	print(n.indX, ", ", n.indY ,", ", n.costSoFar)
+
 i = 0
 j = 0
 stepVal = 0
@@ -156,12 +162,12 @@ while not done:
 	screen.fill((100, 149, 237))
 	for row in NodeList:
 		for node in row:
-			if (node.visited == False):
-				node.col = (0, 255, 255)
-			elif (totalCost >= node.costSoFar):
-				node.col = ((node.indX/widthLim)*255.0, (node.indY/heightLim)*255.0, 255*(float(node.costSoFar/totalCost)))
-			else:
-				node.col = (0,0,0)
+			#if (node.visited == False):
+			#	node.col = (255, 255, 0)
+			#elif (totalCost >= node.costSoFar):
+			#	node.col = ((node.indX/widthLim)*255.0, (node.indY/heightLim)*255.0, 255*(float(node.costSoFar/totalCost)))
+			#else:
+			#	node.col = (0,0,0)
 			node.draw(screen)
 
 	drawPath(screen, path)
