@@ -8,7 +8,7 @@ public class Node : MonoBehaviour
   Node[,] neighbors;
   Node backNode;
   bool visited;
-
+  float costSoFar;
   public Grid_Manager GManager
   {
     get
@@ -21,27 +21,47 @@ public class Node : MonoBehaviour
       manager = value;
     }
   }
-  public Node BackNode{
-    get {
+  public Node BackNode
+  {
+    get
+    {
       return backNode;
     }
 
-    set {
+    set
+    {
       backNode = value;
     }
   }
-  public bool Visited {
-    get {
+  public bool Visited
+  {
+    get
+    {
       return visited;
     }
 
-    set {
+    set
+    {
       visited = value;
     }
   }
-  public Node[,] Neighbors{
-    get {
+  public Node[,] Neighbors
+  {
+    get
+    {
       return neighbors;
+    }
+  }
+  public float CostSoFar
+  {
+    get
+    {
+      return costSoFar;
+    }
+
+    set
+    {
+      costSoFar = value;
     }
   }
   void Awake()
@@ -51,7 +71,7 @@ public class Node : MonoBehaviour
     BackNode = null;
     Visited = false;
   }
-  
+
 
   public void SetNeighbors()
   {
@@ -59,7 +79,8 @@ public class Node : MonoBehaviour
     {
       for (int j = -1; j <= 1; j++)
       {
-        if (i != 0 || j != 0) {
+        if (i != 0 || j != 0)
+        {
           Node n = GManager.FetchNodeObject(i + (int)(transform.position.x), j + (int)(transform.position.z));
           neighbors[i + 1, j + 1] = n;
         }

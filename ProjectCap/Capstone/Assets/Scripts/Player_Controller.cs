@@ -14,7 +14,8 @@ public class Player_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.F)){
-      path = gridManager.BreadthFirst(transform.position, transform.position + transform.forward * 8);
+      //path = gridManager.BreadthFirst(transform.position, transform.position + transform.forward * 18);
+      path = gridManager.Dijkstras(transform.position, transform.position + transform.forward * 18);
       for (int i = 0; i < path.Count - 1; i++){
         Debug.DrawRay(Vector3.up + path[i].position, path[i+1].position - path[i].position, Color.yellow, 3f);
       }
