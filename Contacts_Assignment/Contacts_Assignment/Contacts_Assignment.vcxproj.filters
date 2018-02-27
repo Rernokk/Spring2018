@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\ContactsAssignment\ContactsAssignment\Contacts.c">
+    <ClCompile Include="Contacts.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\ContactsAssignment\ContactsAssignment\Dates.h">
+    <ClInclude Include="Dates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -117,10 +117,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\ContactsAssignment\ContactsAssignment\Contacts.c" />
+    <ClCompile Include="Contacts.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\ContactsAssignment\ContactsAssignment\Dates.h" />
+    <ClInclude Include="Dates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
