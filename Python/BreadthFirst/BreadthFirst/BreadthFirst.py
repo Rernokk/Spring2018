@@ -83,15 +83,15 @@ def DijkstrasSearch(nodeList, startNode, endNode):
 def drawPath(surf, pattern):
 	i = 0
 	while (i < len(pattern)-1):
-		pygame.draw.line(surf, (255,0,0), pattern[i].position.VecToPygame(), pattern[i+1].position.VecToPygame(), 3)
+		pygame.draw.line(surf, (255,255,255), pattern[i].position.VecToPygame(), pattern[i+1].position.VecToPygame(), 3)
 		i+=1
 
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 done = False
 
-widthLim = 20
-heightLim = 15
+widthLim = 32
+heightLim = 24
 NodeList = [[]]
 #Nodes[i][j] = (Node(Vector((800 / widthLim) * i - (800 / (2 * widthLim)), (600 / heightLim) * j - (600 / (2 * heightLim)))))
 
@@ -136,15 +136,16 @@ while (i < widthLim):
 	i+= 1
 print("Time taken: " + str(t.time() - timeStart))
 
-x = 15
-y = 14
+x = 31
+y = 23
 timeStart = t.time()
-path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
-print("Dijkstra's Computation: ", str(t.time() - timeStart))
-print("Found end node, Cost: ", totalCost)
-
-for n in path:
-	print(n.indX, ", ", n.indY ,", ", n.costSoFar)
+totalCost = 0
+path = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y])
+#path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
+#print("Found end node, Cost: ", totalCost)
+#for n in path:
+#	print(n.indX, ", ", n.indY ,", ", n.costSoFar)
+print("Algorithm Computation: ", str(t.time() - timeStart))
 
 i = 0
 j = 0
@@ -184,7 +185,7 @@ while not done:
 
 
 	#Drawing
-	screen.fill((100, 149, 237))
+	screen.fill((0,255,255))
 	for row in NodeList:
 		for node in row:
 			#if (node.visited == False):

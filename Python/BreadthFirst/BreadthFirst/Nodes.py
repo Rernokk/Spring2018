@@ -48,9 +48,13 @@ class Node (object):
 		return self.costSoFar < other.costSoFar
 
 	def draw(self, surf):
-		#for neighbor in self.neighbors:
-			#pygame.draw.line(surf, (neighbor[1],neighbor[1],neighbor[1]), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
-		pygame.draw.circle(surf, self.col, (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 4, 0)
+		for neighbor in self.neighbors:
+			pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
+		#pygame.draw.circle(surf, self.col, (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 4, 0)
+		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(-12,12)).VecToPygame())
+		pygame.draw.line(surf, (0,0,0), (self.position + Vector(12,-12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
+		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(12,-12)).VecToPygame())
+		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
 
 	def shiftNode (self, dir, factor):
 		self.position += dir.normalized() * factor
