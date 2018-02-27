@@ -157,22 +157,31 @@ while not done:
 		if event.type == pygame.QUIT:
 			done = True
 		if event.type == pygame.KEYDOWN:
-			if (event.key == pygame.K_s):
+			if (event.key == pygame.K_DOWN):
 				if (y > 0):
 					y -=1
-					path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
-			if (event.key == pygame.K_w):
+			if (event.key == pygame.K_UP):
 				if (y < heightLim-1):
 					y +=1
-					path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
-			if (event.key == pygame.K_a):
+			if (event.key == pygame.K_LEFT):
 				if (x > 0):
 					x -=1
-					path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
-			if (event.key == pygame.K_d):
+			if (event.key == pygame.K_RIGHT):
 				if (x < widthLim-1):
 					x +=1
-					path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
+
+			if (event.key == pygame.K_b):
+				path = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y])
+
+			if (event.key == pygame.K_d):
+				path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
+
+			if (event.key == pygame.K_a):
+				print("Not yet implemented A* Pathfinding.")
+
+			if (event.key == pygame.K_s):
+				print("Not yet implemented Best-First Pathfinding.")
+
 	
 	#Update
 
