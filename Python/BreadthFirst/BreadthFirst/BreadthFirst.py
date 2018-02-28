@@ -6,79 +6,92 @@ from pygame import *
 from Nodes import *
 from queue import *
 
-def BreadthFirst(nodeList, startNode, endNode):
-	toVisit = [startNode]
-	curr = startNode
-	path = []
-	curr.backNode = 0
-	startNode.col = (255,0,0)
-	endNode.col = (0,0,0)
-	for nodeRow in nodeList:
-		for node in nodeRow:
-			node.visited = False
-			node.backNode = 0
-
-	while (len(toVisit) > 0):
-		curr = toVisit.pop(0)
-		for neighbor in curr.neighbors:
-			if(neighbor[0].visited==False):
-				if (neighbor[0] not in toVisit):
-					toVisit.append(neighbor[0])
-				neighbor[0].visited = True
-				neighbor[0].backNode = curr
-				if (neighbor[0] == endNode):
-					print("Found end node")
-					startNode.backNode = 0
-					path.append(neighbor[0])
-					while (curr != 0):
-						path.append(curr)
-						curr = curr.backNode
-					return path
-	return path
-
-def DijkstrasSearch(nodeList, startNode, endNode):
-	toVisit = [startNode]
-	path = []
+def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
+	retToVisit = [startNode]
+	retPath = []
 	for nodeRow in nodeList:
 		for node in nodeRow:
 			if (node != 0):
 				node.visited = False
 				node.backNode = 0
 				node.costSoFar = 3000000
-				node.col = (255,255,255)
+				node.col = (255,0,0)
 			
 	startNode.costSoFar = 0
 	curr = startNode
 	curr.backNode = 0
+	return retPath, retToVisit
 
-	while (len(toVisit) > 0):
-		curr = toVisit.pop(0)
-		if (curr != 0):
-			for neighbor in curr.neighbors:
-				if (neighbor[0] != 0):
-					currDist = neighbor[1]#curr.position.distance(neighbor[0].position)
-					if(neighbor[0].visited == False):
-						#if (neighbor[0] not in toVisit):
-						toVisit.append(neighbor[0])
-						neighbor[0].visited = True
+def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
+	curr = toVisit.pop(0)
+	for neighbor in curr.neighbors:
+		if(neighbor[0].visited==False):
+			if (neighbor[0] not in toVisit):
+				toVisit.append(neighbor[0])
+			neighbor[0].visited = True
+			neighbor[0].backNode = curr
+			neighbor[0].col = (0,0,0)
+			if (neighbor[0] == endNode):
+				print("Found end node")
+				startNode.backNode = 0
+				path.append(neighbor[0])
+				while (curr != 0):
+					path.append(curr)
+					curr = curr.backNode
+					bool = False
+	return path, toVisit, bool
+
+def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
+	curr = toVisit.pop(0)
+	if (curr != 0):
+		for neighbor in curr.neighbors:
+			if (neighbor[0] != 0):
+				currDist = neighbor[1]
+				if(neighbor[0].visited == False):
+					toVisit.append(neighbor[0])
+					neighbor[0].visited = True
+					neighbor[0].backNode = curr
+					neighbor[0].costSoFar = currDist + curr.costSoFar
+					neighbor[0].col = (0,0,0)
+					if (neighbor[0] == endNode):
+						total = neighbor[0].costSoFar
+						startNode.backNode = 0
+						path.append(neighbor[0])
+						while (curr != 0):
+							path.append(curr)
+							curr = curr.backNode
+						bool = False
+				else:
+					if (curr.costSoFar + currDist <= neighbor[0].costSoFar):
+						neighbor[0].costSoFar = curr.costSoFar + currDist
 						neighbor[0].backNode = curr
-						neighbor[0].costSoFar = currDist + curr.costSoFar
-						if (neighbor[0] == endNode):
-							total = neighbor[0].costSoFar
-							startNode.backNode = 0
-							path.append(neighbor[0])
-							while (curr != 0):
-								path.append(curr)
-								curr = curr.backNode
-							startNode.col = (255,0,0)
-							endNode.col = (0,0,0)
-							return path, total
-					else:
-						#print("Found Visited, Current: ",curr.costSoFar + currDist, ", neighbor: ", neighbor[0].costSoFar)
-						if (curr.costSoFar + currDist <= neighbor[0].costSoFar):
-							neighbor[0].costSoFar = curr.costSoFar + currDist
-							neighbor[0].backNode = curr
-	return path, 0
+	return path, toVisit, 0, bool
+
+def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
+	curr = toVisit.pop(0)
+	if (curr != 0):
+		for neighbor in curr.neighbors:
+			if (neighbor[0] != 0):
+				currDist = neighbor[0].position.distance(endNode.position)
+				if(neighbor[0].visited == False):
+					toVisit.append(neighbor[0])
+					neighbor[0].visited = True
+					neighbor[0].backNode = curr
+					neighbor[0].costSoFar = currDist + curr.costSoFar
+					neighbor[0].col = (0,0,0)
+					if (neighbor[0] == endNode):
+						total = neighbor[0].costSoFar
+						startNode.backNode = 0
+						path.append(neighbor[0])
+						while (curr != 0):
+							path.append(curr)
+							curr = curr.backNode
+						bool = False
+				else:
+					if (curr.costSoFar + currDist <= neighbor[0].costSoFar):
+						neighbor[0].costSoFar = curr.costSoFar + currDist
+						neighbor[0].backNode = curr
+	return path, toVisit, 0, bool
 
 def drawPath(surf, pattern):
 	i = 0
@@ -93,7 +106,6 @@ done = False
 widthLim = 32
 heightLim = 24
 NodeList = [[]]
-#Nodes[i][j] = (Node(Vector((800 / widthLim) * i - (800 / (2 * widthLim)), (600 / heightLim) * j - (600 / (2 * heightLim)))))
 
 i = 1
 while (i <= widthLim):
@@ -107,7 +119,6 @@ while (i <= widthLim):
 	i+= 1
 	NodeList.append([])
 
-#Nodes[0][0].col = (0,0,0)
 
 leftX = (800 / widthLim)
 rightX = (800 - (800 / (widthLim)))
@@ -128,7 +139,7 @@ while (i < widthLim):
 					#	edgeWeight = 1
 					#else:
 					if (NodeList[i][j] != 0):
-						edgeWeight = random.uniform(1, 256)
+						edgeWeight = math.sqrt(k**2 + l**2)
 						NodeList[i][j].neighbors.append([NodeList[i + k][j + l], edgeWeight])
 				l+=1
 			k+=1
@@ -140,19 +151,20 @@ x = 31
 y = 23
 timeStart = t.time()
 totalCost = 0
-path = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y])
-#path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
-#print("Found end node, Cost: ", totalCost)
-#for n in path:
-#	print(n.indX, ", ", n.indY ,", ", n.costSoFar)
+toVisit = []
+path = []
+path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
 print("Algorithm Computation: ", str(t.time() - timeStart))
+runBreadth = False
+runDijkstra = False
+runAStar = False
 
 i = 0
 j = 0
 stepVal = 0
 clock = time.Clock()
 while not done:
-	clock.tick(10)
+	clock.tick(144)
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
@@ -171,13 +183,23 @@ while not done:
 					x +=1
 
 			if (event.key == pygame.K_b):
-				path = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y])
+				print("Calling Breadth")
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
+				path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runBreadth)
+				runBreadth = True
 
 			if (event.key == pygame.K_d):
-				path,totalCost = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y])
+				print("Calling Dijkstras")
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
+				path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runDijkstra)
+				runDijkstra = True
+				print("Total Cost: ", totalCost, ", Length: ", len(path))
 
 			if (event.key == pygame.K_a):
-				print("Not yet implemented A* Pathfinding.")
+				print("Calling A*")
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
+				path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runAStar)
+				runAStar = True
 
 			if (event.key == pygame.K_s):
 				print("Not yet implemented Best-First Pathfinding.")
@@ -192,9 +214,17 @@ while not done:
 	#    i += 1
 	#    j = 0
 
+	if (runBreadth):
+		path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runBreadth)
+
+	if (runDijkstra):
+		path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runDijkstra)
+
+	if (runAStar):
+		path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runAStar)
 
 	#Drawing
-	screen.fill((0,255,255))
+	screen.fill((0,200,255))
 	for row in NodeList:
 		for node in row:
 			#if (node.visited == False):

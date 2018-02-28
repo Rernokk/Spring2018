@@ -37,7 +37,7 @@ class Node (object):
 	def __init__(self, pos, indX, indY):
 		self.position = pos
 		#self.col = (random.uniform(0.0, 255.0),random.uniform(0.0, 255.0),random.uniform(0.0, 255.0))
-		self.col = (255,255,255)
+		self.col = (255,0,0)
 		self.neighbors = []
 		self.visited = False
 		self.indX = indX
@@ -49,7 +49,7 @@ class Node (object):
 
 	def draw(self, surf):
 		for neighbor in self.neighbors:
-			pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
+			pygame.draw.line(surf, self.col, self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
 		#pygame.draw.circle(surf, self.col, (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 4, 0)
 		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(-12,12)).VecToPygame())
 		pygame.draw.line(surf, (0,0,0), (self.position + Vector(12,-12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
