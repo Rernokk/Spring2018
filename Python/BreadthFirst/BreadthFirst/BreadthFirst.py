@@ -15,7 +15,7 @@ def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
 				node.visited = False
 				node.backNode = 0
 				node.costSoFar = 3000000
-				node.col = (255,0,0)
+				node.col = (255,255,255)
 			
 	startNode.costSoFar = 0
 	curr = startNode
@@ -42,6 +42,7 @@ def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
 	return path, toVisit, bool
 
 def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
+	toVisit.sort(key=lambda neighbor: neighbor.costSoFar)
 	curr = toVisit.pop(0)
 	if (curr != 0):
 		for neighbor in curr.neighbors:
@@ -68,7 +69,9 @@ def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 	return path, toVisit, 0, bool
 
 def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
+	toVisit.sort(key=lambda neighbor: neighbor.costSoFar)
 	curr = toVisit.pop(0)
+	curr.col = (0,0,0)
 	if (curr != 0):
 		for neighbor in curr.neighbors:
 			if (neighbor[0] != 0):
@@ -77,8 +80,7 @@ def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					toVisit.append(neighbor[0])
 					neighbor[0].visited = True
 					neighbor[0].backNode = curr
-					neighbor[0].costSoFar = currDist + curr.costSoFar
-					neighbor[0].col = (0,0,0)
+					neighbor[0].costSoFar = currDist + curr.costSoFar + neighbor[1]
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
 						startNode.backNode = 0
@@ -149,12 +151,10 @@ print("Time taken: " + str(t.time() - timeStart))
 
 x = 31
 y = 23
-timeStart = t.time()
 totalCost = 0
 toVisit = []
 path = []
 path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
-print("Algorithm Computation: ", str(t.time() - timeStart))
 runBreadth = False
 runDijkstra = False
 runAStar = False
@@ -162,7 +162,7 @@ runAStar = False
 i = 0
 j = 0
 stepVal = 0
-clock = time.Clock()
+clock = pygame.time.Clock()
 while not done:
 	clock.tick(144)
 	for event in pygame.event.get():
@@ -184,57 +184,55 @@ while not done:
 
 			if (event.key == pygame.K_b):
 				print("Calling Breadth")
-				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
-				path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runBreadth)
+				timeStart = t.time()
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
+				path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runBreadth)
 				runBreadth = True
+				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_d):
 				print("Calling Dijkstras")
-				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
-				path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runDijkstra)
+				timeStart = t.time()
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
+				path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runDijkstra)
 				runDijkstra = True
 				print("Total Cost: ", totalCost, ", Length: ", len(path))
+				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_a):
 				print("Calling A*")
-				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
-				path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runAStar)
+				timeStart = t.time()
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
+				path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runAStar)
 				runAStar = True
+				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_s):
 				print("Not yet implemented Best-First Pathfinding.")
 
 	
 	#Update
-
-	#Debug Coloring
-	#Nodes[i][j].col = (255,0,0)
-	#j+=1
-	#if (j == heightLim):
-	#    i += 1
-	#    j = 0
-
 	if (runBreadth):
-		path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runBreadth)
+		timeStart = t.time()
+		path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runBreadth)
+		print("Breadth Computation: ", str(t.time() - timeStart))
 
 	if (runDijkstra):
-		path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runDijkstra)
+		timeStart = t.time()
+		path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runDijkstra)
+		print("Dijkstra Computation: ", str(t.time() - timeStart))
 
 	if (runAStar):
-		path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[0][0], NodeList[x][y], toVisit, path, runAStar)
+		timeStart = t.time()
+		path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runAStar)
+		print("AStar Computation: ", str(t.time() - timeStart))
 
 	#Drawing
 	screen.fill((0,200,255))
 	for row in NodeList:
 		for node in row:
-			#if (node.visited == False):
-			#	node.col = (255, 255, 0)
-			#elif (totalCost >= node.costSoFar):
-			#	node.col = ((node.indX/widthLim)*255.0, (node.indY/heightLim)*255.0, 255*(float(node.costSoFar/totalCost)))
-			#else:
-			#	node.col = (0,0,0)
 			if (node != 0):
 				node.draw(screen)
-
+	print("Tick Rate: ", clock.tick())
 	drawPath(screen, path)
 	pygame.display.flip()
