@@ -24,16 +24,17 @@ def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
 
 def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
 	curr = toVisit.pop(0)
+	curr.col = (0,0,0)
 	for neighbor in curr.neighbors:
 		if(neighbor[0].visited==False):
 			if (neighbor[0] not in toVisit):
 				toVisit.append(neighbor[0])
 			neighbor[0].visited = True
 			neighbor[0].backNode = curr
-			neighbor[0].col = (0,0,0)
 			if (neighbor[0] == endNode):
 				print("Found end node")
 				startNode.backNode = 0
+				neighbor[0].col = (0,0,0)
 				path.append(neighbor[0])
 				while (curr != 0):
 					path.append(curr)
@@ -44,6 +45,7 @@ def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
 def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 	toVisit.sort(key=lambda neighbor: neighbor.costSoFar)
 	curr = toVisit.pop(0)
+	curr.col = (0,0,0)
 	if (curr != 0):
 		for neighbor in curr.neighbors:
 			if (neighbor[0] != 0):
@@ -53,9 +55,9 @@ def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					neighbor[0].visited = True
 					neighbor[0].backNode = curr
 					neighbor[0].costSoFar = currDist + curr.costSoFar
-					neighbor[0].col = (0,0,0)
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
+						neighbor[0].col = (0,0,0)
 						startNode.backNode = 0
 						path.append(neighbor[0])
 						while (curr != 0):
@@ -69,7 +71,7 @@ def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 	return path, toVisit, 0, bool
 
 def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
-	toVisit.sort(key=lambda neighbor: neighbor.costSoFar)
+	toVisit.sort(key=lambda neighbor: neighbor.position.distance(endNode.position))
 	curr = toVisit.pop(0)
 	curr.col = (0,0,0)
 	if (curr != 0):
@@ -83,6 +85,7 @@ def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					neighbor[0].costSoFar = currDist + curr.costSoFar + neighbor[1]
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
+						neighbor[0].col = (0,0,0)
 						startNode.backNode = 0
 						path.append(neighbor[0])
 						while (curr != 0):
