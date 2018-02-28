@@ -6,6 +6,8 @@ from pygame import *
 from Nodes import *
 from queue import *
 
+pathColor = (0,0,255)
+
 def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
 	retToVisit = [startNode]
 	retPath = []
@@ -31,12 +33,14 @@ def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
 				toVisit.append(neighbor[0])
 			neighbor[0].visited = True
 			neighbor[0].backNode = curr
+			neighbor[0].col = (100, 100, 100)
 			if (neighbor[0] == endNode):
 				print("Found end node")
 				startNode.backNode = 0
 				neighbor[0].col = (0,0,0)
 				path.append(neighbor[0])
 				while (curr != 0):
+					curr.col = pathColor
 					path.append(curr)
 					curr = curr.backNode
 					bool = False
@@ -55,12 +59,14 @@ def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					neighbor[0].visited = True
 					neighbor[0].backNode = curr
 					neighbor[0].costSoFar = currDist + curr.costSoFar
+					neighbor[0].col = (100, 100, 100)
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
-						neighbor[0].col = (0,0,0)
+						neighbor[0].col = pathColor
 						startNode.backNode = 0
 						path.append(neighbor[0])
 						while (curr != 0):
+							curr.col = (0,0,255)
 							path.append(curr)
 							curr = curr.backNode
 						bool = False
@@ -83,12 +89,14 @@ def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					neighbor[0].visited = True
 					neighbor[0].backNode = curr
 					neighbor[0].costSoFar = currDist + curr.costSoFar + neighbor[1]
+					neighbor[0].col = (100, 100, 100)
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
-						neighbor[0].col = (0,0,0)
+						neighbor[0].col = pathColor
 						startNode.backNode = 0
 						path.append(neighbor[0])
 						while (curr != 0):
+							curr.col = (0,0,255)
 							path.append(curr)
 							curr = curr.backNode
 						bool = False
