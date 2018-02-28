@@ -141,7 +141,7 @@ while (i < widthLim):
 					#	edgeWeight = 1
 					#else:
 					if (NodeList[i][j] != 0):
-						edgeWeight = math.sqrt(k**2 + l**2)
+						edgeWeight = math.sqrt(k**2 + l**2) * 100
 						NodeList[i][j].neighbors.append([NodeList[i + k][j + l], edgeWeight])
 				l+=1
 			k+=1
@@ -188,6 +188,8 @@ while not done:
 				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
 				path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runBreadth)
 				runBreadth = True
+				runDijkstra = False
+				runAStar = False
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_d):
@@ -196,6 +198,8 @@ while not done:
 				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
 				path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runDijkstra)
 				runDijkstra = True
+				runBreadth = False
+				runAStar = False
 				print("Total Cost: ", totalCost, ", Length: ", len(path))
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
@@ -205,6 +209,8 @@ while not done:
 				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
 				path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runAStar)
 				runAStar = True
+				runBreadth = False
+				runDijkstra = False
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_s):
@@ -233,6 +239,5 @@ while not done:
 		for node in row:
 			if (node != 0):
 				node.draw(screen)
-	print("Tick Rate: ", clock.tick())
 	drawPath(screen, path)
 	pygame.display.flip()

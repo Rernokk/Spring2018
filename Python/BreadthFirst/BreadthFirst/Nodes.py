@@ -49,13 +49,14 @@ class Node (object):
 
 	def draw(self, surf):
 		pygame.draw.rect(surf, self.col, pygame.Rect(self.position.x - 12, self.position.y - 12, 24, 24))
-		for neighbor in self.neighbors:
-			pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
+		if (self.visited and False):
+			for neighbor in self.neighbors:
+				pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
 		#pygame.draw.circle(surf, self.col, (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 4, 0)
-		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(-12,12)).VecToPygame())
-		pygame.draw.line(surf, (0,0,0), (self.position + Vector(12,-12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
-		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(12,-12)).VecToPygame())
-		pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
+		#pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(-12,12)).VecToPygame())
+		#pygame.draw.line(surf, (0,0,0), (self.position + Vector(12,-12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
+		#pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,-12)).VecToPygame(), (self.position + Vector(12,-12)).VecToPygame())
+		#pygame.draw.line(surf, (0,0,0), (self.position + Vector(-12,12)).VecToPygame(), (self.position + Vector(12,12)).VecToPygame())
 
 	def shiftNode (self, dir, factor):
 		self.position += dir.normalized() * factor
