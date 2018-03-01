@@ -47,9 +47,10 @@ class Node (object):
 	def __lt__(self, other):
 		return self.costSoFar < other.costSoFar
 
-	def draw(self, surf):
-		pygame.draw.rect(surf, self.col, pygame.Rect(self.position.x - 12, self.position.y - 12, 24, 24))
-		if (self.visited and False):
+	def draw(self, surf, drawNeighbors):
+		pygame.draw.rect(surf, (0,0,0), pygame.Rect(self.position.x - 13, self.position.y - 13, 26, 26))
+		pygame.draw.rect(surf, self.col, pygame.Rect(self.position.x - 11, self.position.y - 11, 22, 22))
+		if (drawNeighbors):
 			for neighbor in self.neighbors:
 				pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
 		#pygame.draw.circle(surf, self.col, (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 4, 0)

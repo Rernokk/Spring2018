@@ -7,6 +7,9 @@ from Nodes import *
 from queue import *
 
 pathColor = (0,0,255)
+exploredColor = (50,50,50)
+visitedColor = (100,100,100)
+defaultColor = (0,255,255)
 
 def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
 	retToVisit = [startNode]
@@ -17,7 +20,7 @@ def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
 				node.visited = False
 				node.backNode = 0
 				node.costSoFar = 3000000
-				node.col = (255,255,255)
+				node.col = defaultColor
 			
 	startNode.costSoFar = 0
 	curr = startNode
@@ -26,14 +29,14 @@ def ResetGraph(nodeList, retToVisit, startNode, endNode, retPath):
 
 def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
 	curr = toVisit.pop(0)
-	curr.col = (0,0,0)
+	curr.col = exploredColor
 	for neighbor in curr.neighbors:
 		if(neighbor[0].visited==False):
 			if (neighbor[0] not in toVisit):
 				toVisit.append(neighbor[0])
 			neighbor[0].visited = True
 			neighbor[0].backNode = curr
-			neighbor[0].col = (100, 100, 100)
+			neighbor[0].col = visitedColor
 			if (neighbor[0] == endNode):
 				print("Found end node")
 				startNode.backNode = 0
@@ -49,7 +52,7 @@ def BreadthFirst(nodeList, startNode, endNode, toVisit, path, bool):
 def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 	toVisit.sort(key=lambda neighbor: neighbor.costSoFar)
 	curr = toVisit.pop(0)
-	curr.col = (0,0,0)
+	curr.col = exploredColor
 	if (curr != 0):
 		for neighbor in curr.neighbors:
 			if (neighbor[0] != 0):
@@ -59,14 +62,14 @@ def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					neighbor[0].visited = True
 					neighbor[0].backNode = curr
 					neighbor[0].costSoFar = currDist + curr.costSoFar
-					neighbor[0].col = (100, 100, 100)
+					neighbor[0].col = visitedColor
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
 						neighbor[0].col = pathColor
 						startNode.backNode = 0
 						path.append(neighbor[0])
 						while (curr != 0):
-							curr.col = (0,0,255)
+							curr.col = pathColor
 							path.append(curr)
 							curr = curr.backNode
 						bool = False
@@ -79,7 +82,7 @@ def DijkstrasSearch(nodeList, startNode, endNode, toVisit, path, bool):
 def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
 	toVisit.sort(key=lambda neighbor: neighbor.position.distance(endNode.position))
 	curr = toVisit.pop(0)
-	curr.col = (0,0,0)
+	curr.col = exploredColor
 	if (curr != 0):
 		for neighbor in curr.neighbors:
 			if (neighbor[0] != 0):
@@ -89,14 +92,44 @@ def AStarSearch(nodeList, startNode, endNode, toVisit, path, bool):
 					neighbor[0].visited = True
 					neighbor[0].backNode = curr
 					neighbor[0].costSoFar = currDist + curr.costSoFar + neighbor[1]
-					neighbor[0].col = (100, 100, 100)
+					neighbor[0].col = visitedColor
 					if (neighbor[0] == endNode):
 						total = neighbor[0].costSoFar
 						neighbor[0].col = pathColor
 						startNode.backNode = 0
 						path.append(neighbor[0])
 						while (curr != 0):
-							curr.col = (0,0,255)
+							curr.col = pathColor
+							path.append(curr)
+							curr = curr.backNode
+						bool = False
+				else:
+					if (curr.costSoFar + currDist <= neighbor[0].costSoFar):
+						neighbor[0].costSoFar = curr.costSoFar + currDist
+						neighbor[0].backNode = curr
+	return path, toVisit, 0, bool
+
+def BestFirst(nodeList, startNode, endNode, toVisit, path, bool):
+	toVisit.sort(key=lambda neighbor: neighbor.position.distance(endNode.position))
+	curr = toVisit.pop(0)
+	curr.col = exploredColor
+	if (curr != 0):
+		for neighbor in curr.neighbors:
+			if (neighbor[0] != 0):
+				currDist = neighbor[0].position.distance(endNode.position)
+				if(neighbor[0].visited == False):
+					toVisit.append(neighbor[0])
+					neighbor[0].visited = True
+					neighbor[0].backNode = curr
+					neighbor[0].costSoFar = currDist + curr.costSoFar + neighbor[1]
+					neighbor[0].col = visitedColor
+					if (neighbor[0] == endNode):
+						total = neighbor[0].costSoFar
+						neighbor[0].col = pathColor
+						startNode.backNode = 0
+						path.append(neighbor[0])
+						while (curr != 0):
+							curr.col = pathColor
 							path.append(curr)
 							curr = curr.backNode
 						bool = False
@@ -166,9 +199,12 @@ totalCost = 0
 toVisit = []
 path = []
 path, toVisit = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path)
+
 runBreadth = False
 runDijkstra = False
 runAStar = False
+runBest = False
+drawNeighborLines = False
 
 i = 0
 j = 0
@@ -192,6 +228,8 @@ while not done:
 			if (event.key == pygame.K_RIGHT):
 				if (x < widthLim-1):
 					x +=1
+			if (event.key == pygame.K_n):
+				drawNeighborLines = not drawNeighborLines
 
 			if (event.key == pygame.K_b):
 				print("Calling Breadth")
@@ -201,6 +239,7 @@ while not done:
 				runBreadth = True
 				runDijkstra = False
 				runAStar = False
+				runBest = False
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_d):
@@ -211,6 +250,7 @@ while not done:
 				runDijkstra = True
 				runBreadth = False
 				runAStar = False
+				runBest = False
 				print("Total Cost: ", totalCost, ", Length: ", len(path))
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
@@ -222,10 +262,19 @@ while not done:
 				runAStar = True
 				runBreadth = False
 				runDijkstra = False
+				runBest = False
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_s):
-				print("Not yet implemented Best-First Pathfinding.")
+				print("Calling Best")
+				timeStart = t.time()
+				path, toVisit = ResetGraph(NodeList, toVisit, NodeList[3][3], NodeList[x][y], path)
+				path, toVisit, totalCost, runBest = BestFirst(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runBest)
+				runDijkstra = False
+				runBreadth = False
+				runAStar = False
+				runBest = True
+				print("Best-First Computation.")
 
 	
 	#Update
@@ -244,11 +293,16 @@ while not done:
 		path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runAStar)
 		print("AStar Computation: ", str(t.time() - timeStart))
 
+	if (runBest):
+		timeStart = t.time()
+		path, toVisit, totalCost, runBest = AStarSearch(NodeList, NodeList[3][3], NodeList[x][y], toVisit, path, runBest)
+		print("Best Compution: ", str(t.time() - timeStart))
+
 	#Drawing
 	screen.fill((0,200,255))
 	for row in NodeList:
 		for node in row:
 			if (node != 0):
-				node.draw(screen)
+				node.draw(screen, drawNeighborLines)
 	drawPath(screen, path)
 	pygame.display.flip()
