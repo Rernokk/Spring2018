@@ -113,7 +113,7 @@ int writeToBinary(char* fileName, contact *contacts, size_t numRecords)
   //   			(this means that you will open a new file that will
   //    			overwrite the file if it already exists)
 
-  // -- contacts: is a pointer to memory where all the contacts are currently stored
+  // -- contacts: is a pointer to memory where all the contacts are currently storedRernokk
 
   // -- numRecords: holds the value telling you how many records/structs in memory
   //               (chunks) to write into the file
@@ -126,10 +126,12 @@ int writeToBinary(char* fileName, contact *contacts, size_t numRecords)
   //(3) Close the file (don't forget to flush first)
   //(4) Return 1 to signify success
   FILE* fp = fopen(fileName, "wb+");
-  for (int i = 1; i <= numRecords; i++) {
+  //for (int i = 1; i <= numRecords; i++) {
     //first_name, last_name, company_name, address, city, county, state, zip, phone1, phone2, email, web
-    fprintf(fp, "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\r\n", (&contacts[i])->firstName, (&contacts[i])->lastName, (&contacts[i])->company, (&contacts[i])->street1, (&contacts[i])->city, (&contacts[i])->county, (&contacts[i])->state, (&contacts[i])->zip, (&contacts[i])->phone1, (&contacts[i])->phone2, (&contacts[i])->email, (&contacts[i])->web);
-  }
+    //fprintf(fp, "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\r\n", (&contacts[i])->firstName, (&contacts[i])->lastName, (&contacts[i])->company, (&contacts[i])->street1, (&contacts[i])->city, (&contacts[i])->county, (&contacts[i])->state, (&contacts[i])->zip, (&contacts[i])->phone1, (&contacts[i])->phone2, (&contacts[i])->email, (&contacts[i])->web);
+  //}
+  fwrite(contacts, sizeof(contacts), numRecords, fp);
+  fflush(fp);
   fclose(fp);
   return 1;
 }
@@ -212,6 +214,7 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
 /* sends contact information to console */
 void printContactRecord(contact *record)
 {
+  return;
   // SUPPLY YOUR CODE FOR THIS FUNCTION
   printf("\n*** Contact Information ***\n");
   printf("First Name: %s\n", record->firstName);
@@ -224,7 +227,6 @@ void printContactRecord(contact *record)
   printf("Email: %s\n", record->email);
   printf("Web: %s\n", record->web);
   printf("Phone: %s\n", record->phone1);
-  //printf("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", record->firstName, record->lastName, record->company, record->street1, record->city, record->county, record->state, record->zip, record->phone1, record->phone2, record->email, record->web);
 }
 
 /* sets value into a char array */

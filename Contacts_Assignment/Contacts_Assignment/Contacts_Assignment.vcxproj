@@ -118,7 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Contacts.c" />
+    <ClCompile Include="SmithContacts.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dates.h" />

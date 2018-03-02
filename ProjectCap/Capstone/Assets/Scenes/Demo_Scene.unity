@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -141,11 +141,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quad: {fileID: 1591713998164024, guid: 940e0b547835f2745a94d8b04ad3edd6, type: 2}
-  gridSizeX: 50
-  gridSizeZ: 50
   player: {fileID: 1814290404025476, guid: 3325d132c8d138949bc81dcc500c6df2, type: 2}
-  playerX: 10
-  playerZ: 10
+  playerX: 0
+  playerY: 0
+  playerZ: 0
+  segmentArray:
+  - gridDimensions: {x: 10, y: 1, z: 10}
+    gridOrigin: {x: 0, y: 0, z: 0}
+  - gridDimensions: {x: 10, y: 1, z: 10}
+    gridOrigin: {x: 10, y: 5, z: 0}
+  - gridDimensions: {x: 10, y: 1, z: 10}
+    gridOrigin: {x: 0, y: 10, z: 0}
+  gridSizeX: 0
+  gridSizeY: 0
+  gridSizeZ: 0
 --- !u!4 &864121704
 Transform:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Node : MonoBehaviour
 {
   Grid_Manager manager;
-  Node[,] neighbors;
+  Node[,,] neighbors;
   Node backNode;
   bool visited;
   float costSoFar;
@@ -45,7 +45,7 @@ public class Node : MonoBehaviour
       visited = value;
     }
   }
-  public Node[,] Neighbors
+  public Node[,,] Neighbors
   {
     get
     {
@@ -66,7 +66,7 @@ public class Node : MonoBehaviour
   }
   void Awake()
   {
-    neighbors = new Node[3, 3];
+    neighbors = new Node[3, 3, 3];
     GManager = null;
     BackNode = null;
     Visited = false;
@@ -79,11 +79,21 @@ public class Node : MonoBehaviour
     {
       for (int j = -1; j <= 1; j++)
       {
-        if (i != 0 || j != 0)
+        for (int k = -1; k <= 1; k++)
         {
-          Node n = GManager.FetchNodeObject(i + (int)(transform.position.x), j + (int)(transform.position.z));
-          neighbors[i + 1, j + 1] = n;
+          if (i != 0 || j != 0 || k != 0)
+          {
+            Node n = GManager.FetchNodeObject(i + (int)(transform.position.x), j + (int)(transform.position.z), k + (int)(transform.position.y));
+            neighbors[i + 1, j + 1, k + 1] = n;
+          }
         }
+      }
+    }
+    foreach (Node neighbor in neighbors)
+    {
+      if (neighbor != null)
+      {
+        Debug.DrawRay(transform.position, neighbor.transform.position - transform.position, Color.green, 10f);
       }
     }
   }
