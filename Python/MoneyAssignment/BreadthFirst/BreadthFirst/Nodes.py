@@ -60,7 +60,7 @@ class Node (object):
 			for neighbor in self.neighbors:
 				pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
 		if (self.isCoin):
-			pygame.draw.circle(surf, (255,255,0), (int(self.position.x), int(self.position.y)), 8)
+			pygame.draw.circle(surf, (0,0,255), (int(self.position.x), int(self.position.y)), 8)
 
 	def shiftNode (self, dir, factor):
 		self.position += dir.normalized() * factor
