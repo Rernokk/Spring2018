@@ -20,6 +20,7 @@ typedef struct contacts
   char lastName[31];
   date dob;
   date anniversary;
+  struct contact * next;
   char company[76];
   char street1[51];
   char city[51];
@@ -32,7 +33,7 @@ typedef struct contacts
   char web[101];
 } contact; //608 bytes
 
-           /* function prototypes */
+/* function prototypes */
 unsigned int fGetLine(FILE *fps, char *line, int max_len);
 void setString(char *dest, char *value);
 contact * loadContactCsv(char* sourceFile, long maxRecords, unsigned long *recordsRead);
@@ -62,9 +63,11 @@ int main(void)
   printf("Each contact consists of %lu bytes.\n", sizeof(contact));
 
   // print info for first 10 contacts...
-  for (int i = 0; i<10; i++)
+  contact* tracker = contacts;
+  for (int i = 0; i < 10; i++)
   {
-    printContactRecord(&contacts[i]);
+    printContactRecord(tracker);
+    tracker = tracker->next;
   }
 
   //(about 608 MB)
@@ -93,14 +96,18 @@ int main(void)
   printf("Each contact consists of %lu bytes.\n", sizeof(contact));
 
   // print info for first 10 contacts...
-  for (int i = 0; i<10; i++)
+  contact* tracker2 = contacts2;
+  int indexCounter = 0;
+  for (int i = 0; i < 10; i++)
   {
-    printContactRecord(&contacts2[i]);
+    //printContactRecord(tracker2);
+    printf("%s\n", tracker2->firstName);
+    tracker2 = tracker2->next;
   }
 
   // free the memory used to store the contacts
   free(contacts2);
-
+  getchar();
   return EXIT_SUCCESS;
 }
 
@@ -130,7 +137,14 @@ int writeToBinary(char* fileName, contact *contacts, size_t numRecords)
   }
   //(2) You then must write the data from memory location "contacts" into the file
   //    Note: numRecords tells you how many "Chunks" to write
-  fwrite(contacts, sizeof(contact), numRecords, ptr);
+  //fwrite(contacts, sizeof(contact), numRecords, ptr);
+  contact * tracker = contacts;
+  while ((tracker->next) != 0xCDCDCDCD) {
+    //printf("%p\n", tracker->next);
+    fwrite(tracker, sizeof(contact), 1, ptr);
+    tracker = tracker->next;
+  }
+
   //(3) Close the file (don't forget to flush first)
   fflush(ptr);
   fclose(ptr);
@@ -176,11 +190,11 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
   fseek(ptr, 0L, SEEK_SET);
 
   // (5) Do not read more records than you are told to:
-  if (*recordsRead>maxRecords)
+  if (*recordsRead > maxRecords)
     *recordsRead = maxRecords;
   // (6) CRITICAL: allocate enough memory to hold the number
   //               of records you are about to read from your file.
-  ptContacts = (contact *)malloc(*recordsRead * sizeof(contact));
+  ptContacts = (contact *)malloc(sizeof(contact));
 
   // (7) Make sure your memory pointer is valid (that you were able to allocate the memory)
   if (!ptContacts)
@@ -189,15 +203,26 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
     fclose(ptr);
     return NULL;
   }
+
   // (8) read the file into memory
-
-  fread(ptContacts, sizeof(contact), *recordsRead, ptr);
-
+  char line[256];
+  contact * tracker = ptContacts;
+  while (fGetLine(ptr, line, sizeof(line)) > 0)
+  {
+    fread(tracker, sizeof(contact), 1, ptr);
+    //parseContact(line, tracker);
+    tracker->next = (contact *)malloc(sizeof(contact));
+    tracker = tracker->next;
+    //parseContact(line, placeHolder);
+    //printf("%p: %s\n", placeHolder, placeHolder->firstName);
+    //placeHolder->next = (contact *)malloc(sizeof(contact));
+    //placeHolder = placeHolder->next;
+  }
+  getch();
   // (9) close the file.
   fclose(ptr);
 
   // (10) return memory pointer to contacts.
-
   return ptContacts;
 }
 
@@ -206,6 +231,9 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
 void printContactRecord(contact *record)
 {
   // SUPPLY YOUR CODE FOR THIS FUNCTION
+  if (record != 0xCDCDCDCD) {
+    printf("%s\n", record->firstName);
+  }
 }
 
 /* sets value into a char array */
@@ -266,7 +294,7 @@ contact * loadContactCsv(char* sourceFile, long maxRecords, unsigned long *recor
   contact * contacts;
 
   // allocate memory to hold maximum number of contact records
-  contacts = (contact *)malloc(maxRecords * sizeof(contact));
+  contacts = (contact *)malloc(sizeof(contact));
 
   if (contacts == NULL)
     // we could not allocate enough memory to hold our contact data
@@ -283,10 +311,15 @@ contact * loadContactCsv(char* sourceFile, long maxRecords, unsigned long *recor
 
                     // Read each contact from the text file one line at a time.
                     // Note: 1 "record" = 1 line = 1 contact
-    while (fGetLine(fps, line, sizeof(line))>0 && mi<maxRecords)
+
+    contact * placeHolder = contacts;
+    while (fGetLine(fps, line, sizeof(line)) > 0 && mi < maxRecords)
     {
       // place values we read from the file into a contact record
-      parseContact(line, &contacts[mi]);
+      parseContact(line, placeHolder);
+      //printf("%p: %s\n", placeHolder, placeHolder->firstName);
+      placeHolder->next = (contact *)malloc(sizeof(contact));
+      placeHolder = placeHolder->next;
       mi++; // increment the array index...
     }
 
@@ -297,6 +330,7 @@ contact * loadContactCsv(char* sourceFile, long maxRecords, unsigned long *recor
     fclose(fps);
 
     // Return pointer to memory (the heap) where contacts are stored
+    //Returns Head
     return contacts;
   }
   else
