@@ -97,17 +97,19 @@ int main(void)
 
   // print info for first 10 contacts...
   contact* tracker2 = contacts2;
+  printf("%p\n%s\n", contacts2->next, ((contact*)tracker2->next)->firstName);
   int indexCounter = 0;
   for (int i = 0; i < 10; i++)
   {
-    //printContactRecord(tracker2);
-    printf("%s\n", tracker2->firstName);
-    tracker2 = tracker2->next;
+    if (tracker2 != 0xCDCDCDCD) {
+      printContactRecord(tracker2);
+      tracker2 = tracker2->next;
+    }
   }
 
   // free the memory used to store the contacts
   free(contacts2);
-  getchar();
+  getch();
   return EXIT_SUCCESS;
 }
 
@@ -140,8 +142,8 @@ int writeToBinary(char* fileName, contact *contacts, size_t numRecords)
   //fwrite(contacts, sizeof(contact), numRecords, ptr);
   contact * tracker = contacts;
   while ((tracker->next) != 0xCDCDCDCD) {
-    //printf("%p\n", tracker->next);
-    fwrite(tracker, sizeof(contact), 1, ptr);
+    //printf("%s\n", tracker->firstName);
+    fwrite(tracker->firstName, sizeof(contact), 1, ptr);
     tracker = tracker->next;
   }
 
@@ -187,7 +189,7 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
   //     (b)  This will tell you how many contacts are in the file:
   (*recordsRead) = ftell(ptr) / sizeof(contact);
   //     (c) move back to the beginning of the file (you should know how to do this)
-  fseek(ptr, 0L, SEEK_SET);
+  fseek(ptr, 0L, 0);
 
   // (5) Do not read more records than you are told to:
   if (*recordsRead > maxRecords)
@@ -209,8 +211,9 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
   contact * tracker = ptContacts;
   while (fGetLine(ptr, line, sizeof(line)) > 0)
   {
-    fread(tracker, sizeof(contact), 1, ptr);
-    //parseContact(line, tracker);
+    //fread(tracker, sizeof(contact), 1, ptr);
+    parseContact(line, tracker);
+    printf("%s\n", tracker->firstName);
     tracker->next = (contact *)malloc(sizeof(contact));
     tracker = tracker->next;
     //parseContact(line, placeHolder);
@@ -218,7 +221,6 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
     //placeHolder->next = (contact *)malloc(sizeof(contact));
     //placeHolder = placeHolder->next;
   }
-  getch();
   // (9) close the file.
   fclose(ptr);
 
