@@ -20,7 +20,6 @@ typedef struct contacts
   char lastName[31];
   date dob;
   date anniversary;
-  struct contact * next;
   char company[76];
   char street1[51];
   char city[51];
@@ -31,6 +30,7 @@ typedef struct contacts
   char phone2[16];
   char email[101];
   char web[101];
+  struct contact * next;
 } contact; //608 bytes
 
 /* function prototypes */
@@ -41,6 +41,7 @@ int parseContact(char * line, contact * record);
 void printContactRecord(contact *record);
 int writeToBinary(char* fileName, contact *contacts, size_t numRecords);
 contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recordsRead);
+void freeContacts(contact * head);
 
 /* import contacts from large text file,
 * and write into a new binary file */
@@ -79,7 +80,8 @@ int main(void)
   printf("Finished writing to binary file\n");
 
   // free the memory used to store the contacts
-  free(contacts);
+  //free(contacts);
+  freeContacts(contacts);
 
   //now, let's read in from binary file
   printf("Reading %lu records from binary file...\n", recordCount);
@@ -97,7 +99,6 @@ int main(void)
 
   // print info for first 10 contacts...
   contact* tracker2 = contacts2;
-  printf("%p\n%s\n", contacts2->next, ((contact*)tracker2->next)->firstName);
   int indexCounter = 0;
   for (int i = 0; i < 10; i++)
   {
@@ -108,7 +109,9 @@ int main(void)
   }
 
   // free the memory used to store the contacts
-  free(contacts2);
+  //free(contacts2);
+  freeContacts(contacts2);
+  printf("Completed Operations.\n");
   getch();
   return EXIT_SUCCESS;
 }
@@ -143,7 +146,7 @@ int writeToBinary(char* fileName, contact *contacts, size_t numRecords)
   contact * tracker = contacts;
   while ((tracker->next) != 0xCDCDCDCD) {
     //printf("%s\n", tracker->firstName);
-    fwrite(tracker->firstName, sizeof(contact), 1, ptr);
+    fwrite(tracker, sizeof(contact), 1, ptr);
     tracker = tracker->next;
   }
 
@@ -209,17 +212,13 @@ contact * loadFromBinary(char* sourceFile, long maxRecords, unsigned long *recor
   // (8) read the file into memory
   char line[256];
   contact * tracker = ptContacts;
-  while (fGetLine(ptr, line, sizeof(line)) > 0)
+  //while (fGetLine(ptr, line, sizeof(line)) > 0)
+  while (ftell(ptr) != (*recordsRead) * sizeof(contact))
   {
-    //fread(tracker, sizeof(contact), 1, ptr);
-    parseContact(line, tracker);
-    printf("%s\n", tracker->firstName);
+    fread(tracker, sizeof(contact), 1, ptr);
+    //printf("%d: %d\n", ftell(ptr), (*recordsRead) * sizeof(contact));
     tracker->next = (contact *)malloc(sizeof(contact));
     tracker = tracker->next;
-    //parseContact(line, placeHolder);
-    //printf("%p: %s\n", placeHolder, placeHolder->firstName);
-    //placeHolder->next = (contact *)malloc(sizeof(contact));
-    //placeHolder = placeHolder->next;
   }
   // (9) close the file.
   fclose(ptr);
@@ -424,4 +423,14 @@ int parseContact(char * line, contact * record)
   record->anniversary = ZERO_DATE;
 
   return 1;
+}
+
+void freeContacts(contact * head) {
+  contact * temp = head->next;
+  while (temp != 0xCDCDCDCD) {
+    free(head);
+    head = temp;
+    temp = temp->next;
+  }
+  free(head);
 }
