@@ -46,16 +46,19 @@ class Node (object):
 		self.isObstacle = False;
 		self.isCoin = False;
 		self.obstacleColor = (60,0,0)
+		self.obstacleOffSetX = 0
+		self.obstacleOffSetY = 0
+		self.wallShifting = False
+		self.obstacleTargetTile = 0
 
 	def __lt__(self, other):
 		return self.costSoFar < other.costSoFar
 
 	def draw(self, surf, drawNeighbors):
 		pygame.draw.rect(surf, (0,0,0), pygame.Rect(self.position.x - 13, self.position.y - 13, 26, 26))
-		if (not self.isObstacle):
-			pygame.draw.rect(surf, self.col, pygame.Rect(self.position.x - 11, self.position.y - 11, 22, 22))
-		else:
-			pygame.draw.rect(surf, self.obstacleColor, pygame.Rect(self.position.x - 11, self.position.y - 11, 22, 22))
+		pygame.draw.rect(surf, self.col, pygame.Rect(self.position.x - 11, self.position.y - 11, 22, 22))
+		if (self.isObstacle):
+			pygame.draw.rect(surf, self.obstacleColor, pygame.Rect(self.position.x - 11 + self.obstacleOffSetX, self.position.y - 11+ self.obstacleOffSetY, 22, 22))
 		if (drawNeighbors):
 			for neighbor in self.neighbors:
 				pygame.draw.line(surf, (255,0,0), self.position.VecToPygame(), neighbor[0].position.VecToPygame(), 1)
@@ -75,3 +78,19 @@ class Node (object):
 
 	def flareSelf(self, surf):
 		pygame.draw.circle(surf, (0, 255, 255), (int(self.position.VecToPygame().x), int(self.position.VecToPygame().y)), 10, 0)
+
+	def update(self):
+		if (self.isObstacle):
+			open = []
+			for node in self.neighbors:
+				if (node[0] != 0 and not node[0].isObstacle and not node[0].isCoin):
+					open.append(node[0])
+			if (len(open)> 0):
+				if (not self.wallShifting):
+					if (random.uniform(0, 1) < .02):
+						self.wallShifting = True
+				else:
+					self.obstacleOffSetX -= 1
+					if (abs(self.obstacleOffSetX) == 26):
+						self.obstacleoffSetX = 0
+						self.isObstacle = False

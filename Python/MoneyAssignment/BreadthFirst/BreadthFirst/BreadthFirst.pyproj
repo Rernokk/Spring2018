@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Agent.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BreadthFirst.py" />
     <Compile Include="Nodes.py">
       <SubType>Code</SubType>
