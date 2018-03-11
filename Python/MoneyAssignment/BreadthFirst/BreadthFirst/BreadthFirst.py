@@ -257,8 +257,9 @@ runAStar = False
 runBest = False
 drawNeighborLines = False
 regenMap = False
-
+lastSearch = BreadthFirst
 agent = Agent(NodeList[startX][startY].position, screen)
+NodeList[startX][startY].isOccupied = True
 
 path, toVisit, CoinList = ResetGraph(NodeList, toVisit, NodeList[0][0], NodeList[x][y], path, CoinList, True)
 
@@ -287,6 +288,9 @@ while not done:
 				while (len(path) == 0 and len(tempCoinList) > 0):
 					path, toVisit, CoinList = ResetGraph(NodeList, toVisit, NodeList[startX][startY], NodeList[x][y], path, CoinList, regenMap)
 					path, toVisit, runBreadth = BreadthFirst(NodeList, NodeList[startX][startY], NodeList[x][y], toVisit, path, runBreadth)
+					NodeList[startX][startY].col = (0, 255, 0)
+					NodeList[x][y].col = (255, 0, 0)
+					lastSearch = BreadthFirst
 					runBreadth = True
 					runDijkstra = False
 					runAStar = False
@@ -299,7 +303,7 @@ while not done:
 					else:
 						print("Ran out of things to check.")
 						break;
-				agent.setPath(path)
+				agent.setPath(path, NodeList[x][y])
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_d):
@@ -314,6 +318,9 @@ while not done:
 				while (len(path) == 0 and len(tempCoinList) > 0):
 					path, toVisit, CoinList = ResetGraph(NodeList, toVisit, NodeList[startX][startY], NodeList[x][y], path, CoinList, regenMap)
 					path, toVisit, totalCost, runDijkstra = DijkstrasSearch(NodeList, NodeList[startX][startY], NodeList[x][y], toVisit, path, runDijkstra)
+					NodeList[startX][startY].col = (0, 255, 0)
+					NodeList[x][y].col = (255, 0, 0)
+					lastSearch = DijkstrasSearch
 					runDijkstra = True
 					runBreadth = False
 					runAStar = False
@@ -326,7 +333,7 @@ while not done:
 					else:
 						print("Ran out of things to check.")
 						break;
-				agent.setPath(path)
+				agent.setPath(path, NodeList[x][y])
 				print("Total Cost: ", totalCost, ", Length: ", len(path))
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
@@ -338,6 +345,9 @@ while not done:
 				while (len(path) == 0 and len(tempCoinList) > 0):
 					path, toVisit, CoinList = ResetGraph(NodeList, toVisit, NodeList[startX][startY], NodeList[x][y], path, CoinList, regenMap)
 					path, toVisit, totalCost, runAStar = AStarSearch(NodeList, NodeList[startX][startY], NodeList[x][y], toVisit, path, runAStar)
+					NodeList[startX][startY].col = (0, 255, 0)
+					NodeList[x][y].col = (255, 0, 0)
+					lastSearch = AStarSearch
 					runAStar = True
 					runBreadth = False
 					runDijkstra = False
@@ -350,7 +360,7 @@ while not done:
 					else:
 						print("Ran out of things to check.")
 						break;
-				agent.setPath(path)
+				agent.setPath(path, NodeList[x][y])
 				print("Algorithm Computation: ", str(t.time() - timeStart))
 
 			if (event.key == pygame.K_s):
@@ -361,6 +371,9 @@ while not done:
 				while (len(path) == 0 and len(tempCoinList) > 0):
 					path, toVisit, CoinList = ResetGraph(NodeList, toVisit, NodeList[startX][startY], NodeList[x][y], path, CoinList, regenMap)
 					path, toVisit, totalCost, runBest = BestFirst(NodeList, NodeList[startX][startY], NodeList[x][y], toVisit, path, runBest)
+					NodeList[startX][startY].col = (0, 255, 0)
+					NodeList[x][y].col = (255, 0, 0)
+					lastSearch = BestFirst
 					runDijkstra = False
 					runBreadth = False
 					runAStar = False
@@ -373,7 +386,7 @@ while not done:
 					else:
 						print("Ran out of things to check.")
 						break;
-				agent.setPath(path)
+				agent.setPath(path, NodeList[x][y])
 				print("Best-First Computation.")
 
 		if (event.type == pygame.MOUSEBUTTONDOWN):
@@ -416,13 +429,16 @@ while not done:
 		CoinList.append(NodeList[randX][randY])
 
 	#Updating Agent
-	agent.update(NodeList, CoinList)
+	recalc = agent.update(NodeList, CoinList)
 	startX = m.floor(agent.position.x/ 25)
 	startY = 24 - m.floor((agent.position.y + 25) / 25)
-
-	#for row in NodeList:
-	#	for node in row:
-	#		node.update()
+	if (recalc):
+		path, toVisit, CoinList = ResetGraph(NodeList, toVisit, NodeList[startX][startY], NodeList[x][y], path, CoinList, regenMap)
+		path, toVisit, totalCost, runBest = lastSearch(NodeList, NodeList[startX][startY], NodeList[x][y], toVisit, path, runAStar)
+		agent.setPath(path, NodeList[x][y])
+	for row in NodeList:
+		for node in row:
+			node.update(clock.get_time()/1000)
 
 	#Drawing
 	screen.fill((0,200,255))
@@ -432,8 +448,12 @@ while not done:
 		for node in row:
 			if (node != 0):
 				node.draw(screen, drawNeighborLines)
-				
-	if(len(CoinList) > 0):
+	for row in NodeList:
+		for node in row:
+			if (node != 0):
+				node.drawObstacle(screen)
+
+	if(len(CoinList) > 0 and agent.currentCoin == 0):
 		CoinList.sort(key=lambda coin: coin.position.distance(NodeList[startX][startY].position))
 		pygame.draw.line(screen, (255,0,0), (NodeList[startX][startY].position.x, NodeList[startX][startY].position.y), (CoinList[0].position.x, CoinList[0].position.y))
 		x = m.floor(CoinList[0].position.x/ 25)
