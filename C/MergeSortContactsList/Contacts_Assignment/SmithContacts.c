@@ -44,7 +44,7 @@ contact * loadContacts(char* sourceFile, long maxRecords, unsigned long *records
 void freeContacts(contact * head);
 
 //Merge Sort Prototypes
-void doMergeSort(contact ** head, int sortBy, int sortOrder);
+void doMergeSort(contact ** head, int sortBy, int sortOrder, int iter);
 void splitList(contact * head, contact ** h1, contact **h2);
 contact *mergeListsByLastName(contact *l1, contact *l2, int sortOrder);
 contact *mergeListsByFirstName(contact * l1, contact *l2, int sortOrder);
@@ -104,7 +104,7 @@ int main(void)
 
   printf("There are %lu contacts in our array!\n", recordCount);
   printf("Each contact consists of %lu bytes.\n", sizeof(contact));
-  doMergeSort(&contacts2, 0, 0);
+  doMergeSort(&contacts2, 0, 0, 0);
 
   // print info for first 10 contacts...
   contact* tracker2 = contacts2;
@@ -458,19 +458,28 @@ void freeContacts(contact *head)
 }
 
 //Merge Sort Functions
-void doMergeSort(contact **head, int sortBy, int sortOrder) {
+void doMergeSort(contact **head, int sortBy, int sortOrder,int iter) {
+  printf(" ----- Iteration: %d, Head Ptr: %p, Head Address: %p, Next: %p ----- \n", iter+1, head, (*head), (*head)->next);
   //No processing for empty/single node lists.
-  if (head == NULL || *head == NULL || (*head)->next == NULL) {
+  if (head == NULL
+    || *head == NULL
+    || (*head)->next == NULL) {
     printf("Terminating Early in Merge Sort.");
-    getchar();
     return;
   }
-  printf("%s head in mergeSort\n", (*head)->firstName);
+
+  /*contact** temp = head;
+  for (int i = 0; i < 3; i++){
+    printf("%s\n",(*temp)->firstName);
+    temp = &((*temp)->next);
+  }*/
+
   contact *first, *second;
   splitList(*head, &first, &second);
-  printf("%s, %s\n", (first)->firstName, (second)->firstName);
-  doMergeSort(&first, sortBy, sortOrder);
-  doMergeSort(&second, sortBy, sortOrder);
+  printf("First: %p, Second: %p\n", &first, &second);
+  printf("-------------------------------\n");
+  //doMergeSort(&first, sortBy, sortOrder, iter+1);
+  //doMergeSort(&second, sortBy, sortOrder, iter+1);
 
   if (sortBy == 0) {
     //*head = mergeListsByLastName(first, second, sortOrder);
@@ -478,38 +487,36 @@ void doMergeSort(contact **head, int sortBy, int sortOrder) {
   else {
     //*head = mergeListsByFirstName(first, second, sortOrder);
   }
+  getch();
 }
 
 void splitList(contact * head, contact ** h1, contact ** h2) {
   int segmentLength = 0;
-  h1 = &head;
-  contact* tracker = head;
-  while ((tracker) != 0xCDCDCDCD) {
-    if ((tracker) != 0xCDCDCDCD) {
-      if (tracker->next != NULL){
-        tracker = (tracker)->next;
-      }
-      else {
-        break;
-      }
-      segmentLength++;
+  *h1 = head;
+  contact** track = head;
+  /*while (&((*track)) != NULL) {
+    segmentLength++;
+    printf("%p, %p\n", track, (*track));
+    track = (&((*track)->next));
+  }
+*/
+  *h1 = head;
+
+  int cnt = 0;
+  while (head->next != NULL) {
+    head = head->next;
+    cnt ++;
+    if (cnt > 1000000){
+    printf("%d\n", cnt);
     }
   }
-  tracker = head;
-  printf("Segment Length: %d\n", (int)(segmentLength/2) - 1);
-  for (int i = 0; i < (int)(segmentLength / 2); i++) {
-    if (i == (int)(segmentLength / 2) - 1) {
-      contact* tempPtr = tracker;
-      tracker = tracker->next;
-      h2 = &tracker;
-      tempPtr->next = NULL;
-      break;
-    }
-    else {
-      tracker = tracker->next;
-    }
+
+  printf("Length: %d\n", segmentLength);
+  for (int i = 0; i < segmentLength; i++) {
+
   }
-  printf("First: %s, Second: %s\n", (*h1)->firstName, (*h2)->firstName);
-  //printf("------------------ Seg. length: %d --------------------------------\n", segmentLength);
+
+  printf("%s First\n", (*h1)->firstName);
+  printf("%s Second\n", (*h1)->firstName);
 }
 
