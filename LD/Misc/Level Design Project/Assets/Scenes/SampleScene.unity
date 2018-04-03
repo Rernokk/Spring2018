@@ -1,0 +1,3048 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 1526980366}
+  m_IndirectSpecularColor: {r: 0.17455885, g: 0.2183298, b: 0.3005799, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_TemporalCoherenceThreshold: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 10
+    m_Resolution: 2
+    m_BakeResolution: 10
+    m_AtlasSize: 512
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 256
+    m_PVRBounces: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 1
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1001 &32788037
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -89.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (29)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &64848118
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -138.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (17)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &102049247
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -114.28999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (22)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &206323554
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -49.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &282840810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 282840814}
+  - component: {fileID: 282840813}
+  - component: {fileID: 282840811}
+  - component: {fileID: 282840812}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &282840811
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282840810}
+  m_Enabled: 1
+--- !u!114 &282840812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282840810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c7c84c6a2df7a4a8a0afa4046aabf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!20 &282840813
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282840810}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 1
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &282840814
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282840810}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1933426059}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &414723511
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -133.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (36)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &429541757
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -89.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &466733534
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -96.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f8bee7db90cf095419213298a7cccaf6, type: 2}
+    - target: {fileID: 2300000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: aae051dbad37ef8468fb164dfe5c8a7e, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f1343c7dfe5abc643ba0412448cbb199, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &467331607
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -69.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (26)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &676936468
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -59.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &679762511
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -163.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 80
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c967b87dd96425f45831fed59f5a7a58, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &771674111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 771674112}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771674112
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771674111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &812117747
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &872398578
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -109.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (33)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &880844696
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -133.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (16)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &897375161
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -104.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (35)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &943842672
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -49.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (20)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &947853647
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -54.760002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (25)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &956385099
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -84.490005
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (31)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &980666461
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -64.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &984422380
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -119.21999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &995749251
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.959645
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.51777
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -138.43745
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 4.0010263e-18
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -4.216205e-18
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 63694e6ff2d085a44ae61a33c4498e8e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1010942334
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -104.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (14)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1028297903
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -97.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 375d73193349b1948809eb9c7b0976a5, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f900108b5ca2de24881a66efbfb42d95, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1048528962
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -176.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 066e49b56b030fb4cb3d8c70a31b65e8, type: 2}
+    - target: {fileID: 100000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_Name
+      value: AFA_GlassWall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e36d02e3590e5054b80298e475b7fca4, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1105654896
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -94.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (34)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1113764797
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -144.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52aa839d0f57c684c9b2adfbab434024, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 434b2af52f443674491eb0eec27eb876, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1123358946
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -123.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (18)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1145906325
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -128.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (39)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1189142835
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -79.46999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (21)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1203749510
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -64.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (27)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1221212009
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -84.490005
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1248264583
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -138.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (37)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1255400640
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (23)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1310150433
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -123.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (38)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1337094511
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -119.21999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (30)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1396161852
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00000038236794
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -25.811941
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -80.4941
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000030908623
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.000000030908616
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48e8207f35ef3114ab4e26f95c09baa7, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9d92d22024c78da449748082a5c0f3fd, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1408511024
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -109.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1447247669
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.664211
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f447c279aaea2f468fa386b3d4062c3, type: 2}
+    - target: {fileID: 2300000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 81a0999a1440f5a4b8466c185141186a, type: 2}
+    - target: {fileID: 2300000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15f37d4e3b4e2214ab7cb12820a47529, type: 2}
+    - target: {fileID: 2300000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92c49d87042c0df44ae3817b7718e82c, type: 2}
+    - target: {fileID: 100000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 304bc97013601c54e892d1d4193c83cb, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1452925255
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -114.28999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (15)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &1526980365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1526980367}
+  - component: {fileID: 1526980366}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1526980366
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1526980365}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 100
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: 3
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0
+    m_NormalBias: 0.1
+    m_NearPlane: 5
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1526980367
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1526980365}
+  m_LocalRotation: {x: 0.6940946, y: -0.40749815, z: 0.28096136, w: 0.5227225}
+  m_LocalPosition: {x: 35.54, y: 3, z: 20.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 72.673004, y: -173.059, z: -114.05801}
+--- !u!1001 &1570317783
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -54.760002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1629703358
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0272499
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5577984
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 066e49b56b030fb4cb3d8c70a31b65e8, type: 2}
+    - target: {fileID: 2300000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e36d02e3590e5054b80298e475b7fca4, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bf503e26d7bb0694fbf58a4035f210f4, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1664615817
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -94.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1748218048
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -79.46999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1785981103
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -99.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (32)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1843524444
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -128.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (19)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1866287510
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15f37d4e3b4e2214ab7cb12820a47529, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1902751695
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -69.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1910223085
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -74.53999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &1933426058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1933426059}
+  m_Layer: 0
+  m_Name: Rotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933426059
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1933426058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.94719744, y: -12.6766615, z: -146.91989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 282840814}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1933681628
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -59.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (24)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &1958213700
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -74.53999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (28)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &2021714855
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -180.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_Name
+      value: AFA_Entry (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -575
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 575
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15f37d4e3b4e2214ab7cb12820a47529, type: 2}
+    - target: {fileID: 100000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 97cdd8072233e4647a567403e6d39723, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1001 &2058507120
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -99.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 987316a1ec8efb647b206d22c6b84f8d, type: 2}
+    - target: {fileID: 2300018, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8390338de6fdf5a4c993d7f91e66db4a, type: 2}
+    - target: {fileID: 100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+      propertyPath: m_Name
+      value: churchPew (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13767114e8b60004fb8961f0eccf655e, type: 3}
+  m_IsPrefabParent: 0
