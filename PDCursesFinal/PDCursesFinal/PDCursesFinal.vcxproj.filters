@@ -19,4 +19,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Phoenix.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="100.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="mainMap.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Skull0.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
