@@ -434,8 +434,6 @@ void DrawMap(WINDOW* win, image * map, int playerX, int playerY) {
   int offset = 3;
   for (int i = -50; i <= 50; i++) {
     for (int j = -50; j <= 50; j++) {
-      //if ((i + playerY >= 0 || i + playerY < 10) && (j + playerX >= 0 || j + playerX < 10)){
-      //if ((i + playerY < 0 || i + playerY >= getmaxy(win)) || (j + playerX < 0 || j + playerX >= getmaxx(win))) {
       if ((i + playerY < 0 || i + playerY >= map->height) || (j + playerX < 0 || j + playerX >= map->width)) {
         mvwprintw(win, i + 0, j + 0, " ");
       }

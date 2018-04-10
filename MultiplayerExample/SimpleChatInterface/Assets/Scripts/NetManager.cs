@@ -14,7 +14,7 @@ public class NetManager : NetworkBehaviour {
   int channelID;
   int socketID;
   int socketPort = 4444;
-
+  float timeOfSave = 0f;
   //Client
   int connectionId;
 
@@ -30,12 +30,7 @@ public class NetManager : NetworkBehaviour {
 
   public void StartServer()
   {
-    return;
-    NetworkServer.Listen(4444);
-    NetworkServer.RegisterHandler(42, ServerMessageHandler);
-    isHost = true;
-    serverIsReady = true;
-    print("Server Setup Completed.");
+    
   }
 
   public void StartClient()
@@ -60,6 +55,11 @@ public class NetManager : NetworkBehaviour {
 
   void ServerMessageHandler(NetworkMessage msg){
     print("Server received message.");
+  }
 
+  void Update(){
+    if (isServer){
+      
+    }
   }
 }
