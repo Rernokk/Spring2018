@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Spells">
+      <UniqueIdentifier>{95c42815-aa06-45f2-90c0-0ddd4e930c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Artwork">
+      <UniqueIdentifier>{5a63a768-5b3d-41e1-8094-fe0869cb83d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Fireball0.txt">
+      <Filter>Source Files\Spells</Filter>
+    </Text>
+    <Text Include="Fireball1.txt">
+      <Filter>Source Files\Spells</Filter>
+    </Text>
+    <Text Include="demo1.txt">
+      <Filter>Source Files\Spells</Filter>
+    </Text>
+    <Text Include="demo0.txt">
+      <Filter>Source Files\Spells</Filter>
+    </Text>
+    <Text Include="Phoenix.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull0.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="mainMap.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="SpellDecoration.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="ActionDecoration.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull1.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull2.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull3.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull4.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull5.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Skull6.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

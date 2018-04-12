@@ -17,10 +17,11 @@ public class ChatManager : MonoBehaviour
     transform.Find("Canvas/Panel/Text").GetComponent<Text>().text += val;
     string currentLog = transform.Find("Canvas/Panel/Text").GetComponent<Text>().text;
     string[] splitLog = currentLog.Split('\n');
-    print(splitLog.Length-1);
-    if (splitLog.Length > ChatLimit){
+    if (splitLog.Length > ChatLimit)
+    {
       currentLog = "";
-      for (int i = 1; i < splitLog.Length-1; i++){
+      for (int i = 1; i < splitLog.Length - 1; i++)
+      {
         currentLog += splitLog[i] + "\n";
       }
     }
