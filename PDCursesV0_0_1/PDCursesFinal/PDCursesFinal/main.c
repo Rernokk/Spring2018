@@ -569,7 +569,7 @@ int main()
 
   //Defining Color Pairs & Color Initialization
   start_color();
-  init_color(COLOR_CYAN, 0, 0, 1000);
+  init_color(COLOR_CYAN, 1000, 0, 0);
   init_pair(1, COLOR_RED, COLOR_WHITE);
   for (int i = 2; i < 16; i++) {
     init_pair(i, COLOR_YELLOW, COLOR_BLACK);
@@ -588,7 +588,7 @@ int main()
   WINDOW* combatMyStatsSubWindow = subwin(mainWindow, 26, 26, 75, 75);
   WINDOW* combatMySpellsSubWindow = subwin(mainWindow, 20, 26, 55, 75);
   WINDOW* combatEnemySpellsSubWindow = subwin(mainWindow, 20, 26, 26, 75);
-  WINDOW* combatDecorationSubWindow = subwin(mainWindow, 11, 26, 45, 75);
+  WINDOW* combatDecorationSubWindow = subwin(mainWindow, 11, 26, 46, 75);
 
   //Spell Initialization & Preloading
   spell fireball = { "demo", 2, 10 };
@@ -608,8 +608,11 @@ int main()
      0 - Main Menu, player interacts w/ Scene to start game via Up/Down or W/S.
      1 - World Scene, player navigates 2D realm, overall HUD.
      2 - Combat Scene, player uses turn-based combat.
+     3 - Backstory Scene
+     4 - Instructions
+     5 - Credits
   */
-  
+
   // --- Misc. Additional Variables --- //
   int currentScene = 0;
   int selectedMenu = 0;
@@ -617,6 +620,7 @@ int main()
   int playerSpellPage = 0;
   int enemySpellPage = 0;
   int combatMenuX = 0, combatMenuY = 0;
+  char* combatMenuActionSubWindow = "MAIN";
 
   //Pre-loading artwork.
   spell skull = { "Skull", 7, 10 };
@@ -624,6 +628,7 @@ int main()
   image mainMap = { "mainMap.txt" };
   image spellDecoration = { "SpellDecoration.txt" };
   image actionDecoration = { "ActionDecoration.txt" };
+  image splashArt = { "Splash.txt" };
 
   LoadSpellData(&skull);
   int skullDir = 1;
@@ -631,6 +636,7 @@ int main()
   LoadAsciiFile(&mainMap);
   LoadAsciiFile(&spellDecoration);
   LoadAsciiFile(&actionDecoration);
+  LoadAsciiFile(&splashArt);
 
   //Denoting ASCII Symbols
   char wall = 'x';
@@ -671,8 +677,43 @@ int main()
     switch (currentScene) {
     case(0):
       switch (in) {
+      case('w'):
+        selectedMenu -= 1;
+        if (selectedMenu < 0) {
+          selectedMenu = 4;
+        }
+        break;
+      case('s'):
+        selectedMenu++;
+        if (selectedMenu > 4) {
+          selectedMenu = 0;
+        }
+        break;
+      case('z'):
+        currentScene = 2;
+        break;
       case(' '):
-        currentScene++;
+        switch (selectedMenu) {
+        case(0):
+          //Gameplay
+          currentScene = 1;
+          break;
+        case(1):
+          //Instructions
+          currentScene = 4;
+          break;
+        case(2):
+          //Credits
+          currentScene = 5;
+          break;
+        case(3):
+          //Backstory
+          currentScene = 3;
+          break;
+        case(4):
+          goto ENDGAME;
+          break;
+        }
         break;
       }
       break;
@@ -736,13 +777,49 @@ int main()
       case('d'):
         combatMenuY = -combatMenuY + 1;
         break;
-
+      case(' '):
+        if (combatMenuActionSubWindow == "MAIN") {
+          if (combatMenuX == 0) {
+            switch (combatMenuY) {
+            case(0):
+              combatMenuActionSubWindow = "ATTACK";
+              break;
+            case(1):
+              combatMenuActionSubWindow = "SPELL";
+              break;
+            }
+          }
+          else {
+            switch (combatMenuY) {
+            case(0):
+              combatMenuActionSubWindow = "ITEM";
+              break;
+            case(1):
+              combatMenuActionSubWindow = "FLEE";
+              break;
+            }
+          }
+        }
+        break;
       case('g'):
         animatingSpell = 1;
+        break;
+      case('z'):
+        currentScene = 0;
+        break;
+      }
+      break;
+    case(3):
+    case(4):
+    case(5):
+      switch (in) {
+      case(' '):
+        currentScene = 0;
         break;
       }
       break;
     }
+
     //Regardless of which scene we are in, break and exit.
     if (in == 'q') {
       break;
@@ -758,8 +835,53 @@ int main()
     //Draw Objects based on current scene.
     switch (currentScene) {
     case(0):
-      //DrawAsciiFile(&skull0, ceil(mainWindowMaxY / 2) - (skull0.width / 2), ceil(mainWindowMaxX / 2) - (skull0.height / 2));
-      AnimateTestSequence(&animationState, &animatingSpell, &skull, mainWindow, 10, 10, &animationCounter, animationDelay*3, 1, 1, &skullDir);
+      DrawAsciiFile(&splashArt, 0, 1);
+      mvwprintw(mainWindow, 20, 2, "Created By Shannon Smith");
+      mvwprintw(mainWindow, 21, 2, "CS2060-003");
+      mvwprintw(mainWindow, 22, 2, "Spring 2018");
+      mvwprintw(mainWindow, 23, 2, "April 14th, 2018");
+
+      if (selectedMenu == 0) {
+        wattron(mainWindow, COLOR_PAIR(2));
+        mvwprintw(mainWindow, 60, 2, "Play Game");
+        wattroff(mainWindow, COLOR_PAIR(2));
+      }
+      else {
+        mvwprintw(mainWindow, 60, 2, "Play Game");
+      }
+
+      if (selectedMenu == 1) {
+        wattron(mainWindow, COLOR_PAIR(2));
+        mvwprintw(mainWindow, 62, 2, "Instructions");
+        wattroff(mainWindow, COLOR_PAIR(2));
+      }
+      else {
+        mvwprintw(mainWindow, 62, 2, "Instructions");
+      }
+      if (selectedMenu == 2) {
+        wattron(mainWindow, COLOR_PAIR(2));
+        mvwprintw(mainWindow, 64, 2, "Credits");
+        wattroff(mainWindow, COLOR_PAIR(2));
+      }
+      else {
+        mvwprintw(mainWindow, 64, 2, "Credits");
+      }
+      if (selectedMenu == 3) {
+        wattron(mainWindow, COLOR_PAIR(2));
+        mvwprintw(mainWindow, 66, 2, "Backstory");
+        wattroff(mainWindow, COLOR_PAIR(2));
+      }
+      else {
+        mvwprintw(mainWindow, 66, 2, "Backstory");
+      }
+      if (selectedMenu == 4) {
+        wattron(mainWindow, COLOR_PAIR(2));
+        mvwprintw(mainWindow, 68, 2, "Exit");
+        wattroff(mainWindow, COLOR_PAIR(2));
+      }
+      else {
+        mvwprintw(mainWindow, 68, 2, "Exit");
+      }
       break;
     case(1):
       DrawMap(mainMenuInsetWindow, &mainMap, Player.x, Player.y);
@@ -818,48 +940,86 @@ int main()
       }
 
       //Player Menu Selection
-      if (combatMenuX == 0 && combatMenuY == 0) {
-        wattron(combatMenuSubWindow, COLOR_PAIR(2));
-        mvwprintw(combatMenuSubWindow, 7, 35, "ATTACK");
-        wattroff(combatMenuSubWindow, COLOR_PAIR(2));
-      }
-      else {
-        mvwprintw(combatMenuSubWindow, 7, 35, "ATTACK");
-      }
+      if (combatMenuActionSubWindow == "MAIN") {
+        if (combatMenuX == 0 && combatMenuY == 0) {
+          wattron(combatMenuSubWindow, COLOR_PAIR(2));
+          mvwprintw(combatMenuSubWindow, 7, 35, "ATTACK");
+          wattroff(combatMenuSubWindow, COLOR_PAIR(2));
+        }
+        else {
+          mvwprintw(combatMenuSubWindow, 7, 35, "ATTACK");
+        }
 
-      if (combatMenuX == 1 && combatMenuY == 0) {
-        wattron(combatMenuSubWindow, COLOR_PAIR(2));
-        mvwprintw(combatMenuSubWindow, 15, 35, "SPELL");
-        wattroff(combatMenuSubWindow, COLOR_PAIR(2));
-      }
-      else {
-        mvwprintw(combatMenuSubWindow, 15, 35, "SPELL");
-      }
+        if (combatMenuX == 1 && combatMenuY == 0) {
+          wattron(combatMenuSubWindow, COLOR_PAIR(2));
+          mvwprintw(combatMenuSubWindow, 15, 35, "SPELL");
+          wattroff(combatMenuSubWindow, COLOR_PAIR(2));
+        }
+        else {
+          mvwprintw(combatMenuSubWindow, 15, 35, "SPELL");
+        }
 
-      if (combatMenuX == 0 && combatMenuY == 1) {
-        wattron(combatMenuSubWindow, COLOR_PAIR(2));
-        mvwprintw(combatMenuSubWindow, 7, 55, "ITEM");
-        wattroff(combatMenuSubWindow, COLOR_PAIR(2));
-      }
-      else {
-        mvwprintw(combatMenuSubWindow, 7, 55, "ITEM");
-      }
+        if (combatMenuX == 0 && combatMenuY == 1) {
+          wattron(combatMenuSubWindow, COLOR_PAIR(2));
+          mvwprintw(combatMenuSubWindow, 7, 55, "ITEM");
+          wattroff(combatMenuSubWindow, COLOR_PAIR(2));
+        }
+        else {
+          mvwprintw(combatMenuSubWindow, 7, 55, "ITEM");
+        }
 
-      if (combatMenuX == 1 && combatMenuY == 1) {
-        wattron(combatMenuSubWindow, COLOR_PAIR(2));
-        mvwprintw(combatMenuSubWindow, 15, 55, "FLEE");
-        wattroff(combatMenuSubWindow, COLOR_PAIR(2));
+        if (combatMenuX == 1 && combatMenuY == 1) {
+          wattron(combatMenuSubWindow, COLOR_PAIR(2));
+          mvwprintw(combatMenuSubWindow, 15, 55, "FLEE");
+          wattroff(combatMenuSubWindow, COLOR_PAIR(2));
+        }
+        else {
+          mvwprintw(combatMenuSubWindow, 15, 55, "FLEE");
+        }
       }
-      else {
-        mvwprintw(combatMenuSubWindow, 15, 55, "FLEE");
+      else if (combatMenuActionSubWindow == "SPELL") {
+        //nodelay(mainWindow, FALSE);
+        char spellInput[32];
+        mvwprintw(combatMenuSubWindow, 10, 32, "Cast: ");
+        //mvwscanw(combatMenuSubWindow, 10, 40, &spellInput);
+        getstr(spellInput);
+        //nodelay(mainWindow, TRUE);
+        combatMenuActionSubWindow = "MAIN";
       }
-
       //Animating Spell Cast
       if (animatingSpell == 1) {
         AnimateTestSequence(&animationState, &animatingSpell, &fireball, combatSceneSubWindow, 20, 20, &animationCounter, animationDelay, 1, 0, 1);
       }
       break;
-
+    case(3):
+      mvprintw(1, 1, "Backstory - Press space to return to main menu.");
+      mvprintw(5, 1, "This is still a work in progress. For now, you play as a rogue spellweaver.");
+      mvprintw(6, 1, "You are wandering the country side in search of better reagents and ancient arcane powers.");
+      mvprintw(8, 1, "In your journey, you will cross enemies...");
+      mvprintw(9, 1, "Some may attempt to rob you, others will try to outright kill you.");
+      mvprintw(10, 1, "Prove to the world that you are not to be taken lightly.");
+      break;
+    case(4):
+      mvprintw(1, 1, "Instructions - Press space to return to main menu.");
+      mvprintw(5, 1, "While still a work in progress, you will have several areas to explore and\n find new equipment and arcane items.");
+      mvprintw(8, 1, "Some people you cross will try to kill you, wherein you will fight them directly.");
+      mvprintw(10, 1, "Combat is turn-based.");
+      mvprintw(11, 1, "Attack with brute force and ancient magics to devastate your foes.");
+      mvprintw(13, 1, "Traverse the open world with:");
+      mvprintw(14, 1, "W - Up");
+      mvprintw(15, 1, "A - Left");
+      mvprintw(16, 1, "D - Right");
+      mvprintw(17, 1, "S - Down");
+      mvprintw(20, 1, "For now, you can explore the world by pressing play on the main screen.");
+      mvprintw(21, 1, "You can also see the combat interface by pressing <Z> while in the main menu, and <Z> to return.");
+      break;
+    case(5):
+      mvprintw(1, 1, "Credits - Press space to return to main menu.");
+      mvwprintw(mainWindow, 5, 2, "Created By Shannon Smith");
+      mvwprintw(mainWindow, 7, 2, "CS2060-003");
+      mvwprintw(mainWindow, 9, 2, "Spring 2018");
+      mvwprintw(mainWindow, 11, 2, "April 14th, 2018");
+      break;
     }
     // --- END DRAW SEGMENT --- //
 
@@ -869,7 +1029,7 @@ int main()
 ENDGAME:
 
   nodelay(mainWindow, FALSE);
-  getch();                      /* Wait for user input */
+  //getch();                      /* Wait for user input */
   endwin();                     /* End curses mode */
 
   return 0;

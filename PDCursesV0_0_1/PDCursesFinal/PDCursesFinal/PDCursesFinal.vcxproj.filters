@@ -71,5 +71,8 @@
     <Text Include="Skull6.txt">
       <Filter>Source Files\Artwork</Filter>
     </Text>
+    <Text Include="Splash.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
   </ItemGroup>
 </Project>

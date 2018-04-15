@@ -140,6 +140,7 @@
     <Text Include="mainMap.txt" />
     <Text Include="Phoenix.txt" />
     <Text Include="Skull0.txt" />
+    <Text Include="Splash.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,9 +1,9 @@
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
-oooooooooooooooooooooooo
+ #   #    #  #    #   # 
+ #    #  #    #  #    # 
+  #  # ##  ##  ## #  #  
+   ##   # #### #   ##   
+   ##   # #### #   ##   
+  #  # ##  ##  ## #  #  
+ #    #  #    #  #    # 
+ #   #    #  #    #   # 
+#    #     ##     #    #
