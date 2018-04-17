@@ -96,11 +96,11 @@ public class PlayerController : NetworkBehaviour
 
     if (Input.GetKeyDown(KeyCode.J))
     {
-      NetworkManager.singleton.ServerChangeScene("AnotherScene");
+      //NetworkManager.singleton.ServerChangeScene("AnotherScene");
     }
 
     if (Input.GetKeyDown(KeyCode.K)){
-      NetworkManager.singleton.ServerChangeScene("SampleScene");
+      //NetworkManager.singleton.ServerChangeScene("SampleScene");
     }
   }
 
@@ -133,6 +133,11 @@ public class PlayerController : NetworkBehaviour
     playerID = s;
     BinaryFormatter bf = new BinaryFormatter();
     FileStream src = new FileStream("CharData.dat", FileMode.Create);
+    FileStream ptxt = new FileStream("PlainTextMyKey.txt", FileMode.Create);
+    StreamWriter writer = new StreamWriter(ptxt);
+    writer.WriteLine(s);
+    writer.Close();
+    ptxt.Close();
     bf.Serialize(src, s);
     src.Close();
   }

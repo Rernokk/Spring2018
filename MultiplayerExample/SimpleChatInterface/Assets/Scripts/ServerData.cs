@@ -25,7 +25,8 @@ public class ServerData : NetworkBehaviour
       playerConnections = new Dictionary<int, PlayerController>();
       ServerLoadData();
       timeOfStart = Time.realtimeSinceStartup;
-      for(int i = 0; i < 8; i++){
+      for (int i = 0; i < 8; i++)
+      {
         GameObject obj = Instantiate(blockPrefab, new Vector3(UnityEngine.Random.Range(-5f, 5f), UnityEngine.Random.Range(-5f, 5f), UnityEngine.Random.Range(-5f, 5f)), Quaternion.Euler(UnityEngine.Random.Range(-90f, 90f), UnityEngine.Random.Range(-90f, 90f), UnityEngine.Random.Range(-90f, 90f)));
         NetworkServer.Spawn(obj);
       }
@@ -96,15 +97,20 @@ public class ServerData : NetworkBehaviour
     print("Backing up current players.");
     BinaryFormatter bf = new BinaryFormatter();
     FileStream fileSrc = new FileStream("PlayerData.dat", FileMode.Create);
+    FileStream ptxt = new FileStream("PlainTextServerData.txt", FileMode.Create);
+    StreamWriter writer = new StreamWriter(ptxt);
     DataPackage pak = new DataPackage(playerConnections.Count);
     foreach (PlayerController val in playerConnections.Values)
     {
       PlayerData temp = new PlayerData(val.charName, val.playerID, val.level);
+      writer.WriteLine("Name: " + val.charName + ", PID: " + val.playerID + ", Level: " + val.level);
       pak.dat.Add(temp);
     }
     bf.Serialize(fileSrc, pak);
     print("Backup Completed.");
     fileSrc.Close();
+    writer.Close();
+    ptxt.Close();
   }
 
   void ServerLoadData()
