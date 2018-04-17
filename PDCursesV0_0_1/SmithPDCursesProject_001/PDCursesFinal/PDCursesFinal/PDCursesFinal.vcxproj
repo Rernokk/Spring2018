@@ -76,11 +76,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\slyth\Desktop\Spring2018\PDCursesV0_0_1\PDCursesFinal\PDCursesFinal\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\imadu\Documents\Spring2018\PDCursesV0_0_1\SmithPDCursesProject_001\PDCursesFinal\PDCursesFinal\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>C:\Users\slyth\Desktop\Spring2018\PDCursesV0_0_1\PDCursesFinal\PDCursesFinal\lib\pdcurses.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\imadu\Documents\Spring2018\PDCursesV0_0_1\SmithPDCursesProject_001\PDCursesFinal\PDCursesFinal\lib\pdcurses.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -89,12 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>$(ProjectDir)lib\pdcurses.lib</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
