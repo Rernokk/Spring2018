@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/slyth/Desktop/Desktop.exe
+C:/Users/slyth/Desktop/Spring2018/MultiplayerBuild/MultiplayerBuild.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 Assets/Scenes/AnotherScene.unity
