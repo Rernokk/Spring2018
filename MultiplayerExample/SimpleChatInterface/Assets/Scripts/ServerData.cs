@@ -36,26 +36,32 @@ public class ServerData : NetworkBehaviour
   void ServerAcceptConnection(NetworkMessage message)
   {
     print("Registering connection from: " + message.conn.connectionId);
-    PlayerController holder = message.ReadMessage<PlayerPackage>().obj.GetComponent<PlayerController>();
+    //PlayerController holder = message.ReadMessage<PlayerPackage>().obj.GetComponent<PlayerController>();
+    string searchID = message.ReadMessage<StringMessage>().value;
+    PlayerController holder = message.conn.playerControllers[0].gameObject.GetComponent<PlayerController>();
     if (playerDataSet == null)
     {
       playerDataSet = new Dictionary<string, PlayerData>();
     }
     print("Player Data Length: " + playerDataSet.Count);
-    foreach (string pid in playerDataSet.Keys)
+
+    if (holder != null)
     {
-      if (pid == holder.playerID)
+      foreach (string pid in playerDataSet.Keys)
       {
-        print("Found player ID: " + pid);
-        holder.level = playerDataSet[pid].level;
-        holder.charName = playerDataSet[pid].name;
-        holder.playerID = pid;
-        break;
+        if (pid == holder.playerID)
+        {
+          print("Found player ID: " + pid);
+          holder.level = playerDataSet[pid].level;
+          holder.charName = playerDataSet[pid].name;
+          holder.playerID = pid;
+          break;
+        }
       }
+      print(holder.playerID);
     }
-
-
-    if (holder.playerID == "")
+    print(message.conn.playerControllers.Count);
+    if (searchID == "")
     {
       bool unique = true;
       while (unique)

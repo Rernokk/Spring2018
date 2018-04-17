@@ -70,7 +70,8 @@ public class PlayerController : NetworkBehaviour
       SyncPlayerID("");
       //playerID = "";
     }
-    NetworkManager.singleton.client.connection.Send(MsgType.Connect, new PlayerPackage(gameObject));
+    NetworkManager.singleton.client.connection.Send(MsgType.Connect, new StringMessage(playerID));
+    NetworkManager.singleton.client.RegisterHandler(MsgType.Connect, SyncPlayerIDFromServer);
     DontDestroyOnLoad(gameObject);
   }
 
@@ -140,6 +141,23 @@ public class PlayerController : NetworkBehaviour
       return;
     }
     //string s = mess.ReadMessage<StringMessage>().value;
+    playerID = s;
+    BinaryFormatter bf = new BinaryFormatter();
+    FileStream src = new FileStream("CharData.dat", FileMode.Create);
+    FileStream ptxt = new FileStream("PlainTextMyKey.txt", FileMode.Create);
+    StreamWriter writer = new StreamWriter(ptxt);
+    writer.WriteLine(s);
+    writer.Close();
+    ptxt.Close();
+    bf.Serialize(src, s);
+    src.Close();
+  }
+
+  void SyncPlayerIDFromServer(NetworkMessage message){
+    if (!isLocalPlayer){
+      return;
+    }
+    string s = message.ReadMessage<StringMessage>().value;
     playerID = s;
     BinaryFormatter bf = new BinaryFormatter();
     FileStream src = new FileStream("CharData.dat", FileMode.Create);
