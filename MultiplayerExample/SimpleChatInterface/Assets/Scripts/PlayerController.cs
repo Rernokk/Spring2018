@@ -29,7 +29,8 @@ public class PlayerController : NetworkBehaviour
   [SerializeField] GameObject myUI;
   [SyncVar(hook = "UpdateLevelHUD")] public int level;
   [SyncVar(hook = "UpdateNameHUD")] public string charName;
-  [SyncVar(hook = "SyncPlayerID")] public string playerID;
+  //[SyncVar(hook = "SyncPlayerID")] public string playerID;
+  public string playerID;
 
 
   public override void OnStartClient()
@@ -59,13 +60,13 @@ public class PlayerController : NetworkBehaviour
       BinaryFormatter bf = new BinaryFormatter();
       string s = (string)bf.Deserialize(src);
       src.Close();
-      SyncPlayerID(s);
+      playerID = s;
     }
     else
     {
       CmdChangeName("NotBob");
       CmdLevelUp();
-      SyncPlayerID("");
+      playerID = "";
     }
     NetworkManager.singleton.client.connection.Send(MsgType.Connect, new PlayerPackage(gameObject));
     DontDestroyOnLoad(gameObject);
@@ -99,7 +100,8 @@ public class PlayerController : NetworkBehaviour
       //NetworkManager.singleton.ServerChangeScene("AnotherScene");
     }
 
-    if (Input.GetKeyDown(KeyCode.K)){
+    if (Input.GetKeyDown(KeyCode.K))
+    {
       //NetworkManager.singleton.ServerChangeScene("SampleScene");
     }
   }
@@ -128,8 +130,13 @@ public class PlayerController : NetworkBehaviour
     charName = val;
   }
 
-  void SyncPlayerID(string s)
+  void SyncPlayerID(NetworkMessage mess)
   {
+    if (!isLocalPlayer)
+    {
+      return;
+    }
+    string s = mess.ReadMessage<StringMessage>().value;
     playerID = s;
     BinaryFormatter bf = new BinaryFormatter();
     FileStream src = new FileStream("CharData.dat", FileMode.Create);

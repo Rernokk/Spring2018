@@ -71,7 +71,7 @@ public class ServerData : NetworkBehaviour
       }
     }
     playerConnections.Add(message.conn.connectionId, holder);
-
+    NetworkServer.SendToClient(message.conn.connectionId, MsgType.Connect, new StringMessage(holder.playerID));
   }
 
   private void Update()
