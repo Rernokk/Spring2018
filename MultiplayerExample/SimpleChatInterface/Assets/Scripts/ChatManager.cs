@@ -37,10 +37,11 @@ public class ChatManager : MonoBehaviour
 
   void Update()
   {
-    /*if (Input.GetKeyDown(KeyCode.G))
+    if (Input.GetKeyDown(KeyCode.G))
     {
-      ClientSendMessage(txtField);
-    }*/
+      //ClientSendMessage(txtField);
+      
+    }
   }
 
   public void ClientSendMessage(Text textField)

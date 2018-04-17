@@ -68,6 +68,7 @@ public class PlayerController : NetworkBehaviour
       SyncPlayerID("");
     }
     NetworkManager.singleton.client.connection.Send(MsgType.Connect, new PlayerPackage(gameObject));
+    DontDestroyOnLoad(gameObject);
   }
 
   void Update()
@@ -95,7 +96,11 @@ public class PlayerController : NetworkBehaviour
 
     if (Input.GetKeyDown(KeyCode.J))
     {
-      print(playerID);
+      NetworkManager.singleton.ServerChangeScene("AnotherScene");
+    }
+
+    if (Input.GetKeyDown(KeyCode.K)){
+      NetworkManager.singleton.ServerChangeScene("SampleScene");
     }
   }
 

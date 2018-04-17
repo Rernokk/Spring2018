@@ -3,6 +3,7 @@ PlayerPath?
 C:/Users/slyth/Desktop/Desktop.exe
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
+Assets/Scenes/AnotherScene.unity
 SceneListEnd?
 0d7d4dac0f970073ffd1cd620e728426 Assembly-CSharp.dll:.WorldChatScript
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
