@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatInterface", "SimpleChatInterface.csproj", "{D5957CD9-519B-C7E9-0B8B-EF9959066454}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatInterface.Plugins", "SimpleChatInterface.Plugins.csproj", "{E153AB59-1CDD-BE80-0913-EC924A891157}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PackageManagerUI.Editor", "Unity.PackageManagerUI.Editor.csproj", "{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChatInterface.Editor", "SimpleChatInterface.Editor.csproj", "{D7D0D5D1-7889-F95C-5252-5AA95A9087EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +19,18 @@ Global
 		{D5957CD9-519B-C7E9-0B8B-EF9959066454}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5957CD9-519B-C7E9-0B8B-EF9959066454}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5957CD9-519B-C7E9-0B8B-EF9959066454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E153AB59-1CDD-BE80-0913-EC924A891157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E153AB59-1CDD-BE80-0913-EC924A891157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E153AB59-1CDD-BE80-0913-EC924A891157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E153AB59-1CDD-BE80-0913-EC924A891157}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D0D5D1-7889-F95C-5252-5AA95A9087EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D0D5D1-7889-F95C-5252-5AA95A9087EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D0D5D1-7889-F95C-5252-5AA95A9087EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D0D5D1-7889-F95C-5252-5AA95A9087EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

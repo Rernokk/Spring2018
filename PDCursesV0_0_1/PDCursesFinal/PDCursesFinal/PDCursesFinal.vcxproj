@@ -131,10 +131,31 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ActionDecoration.txt" />
+    <Text Include="ActionDecoration_color.txt" />
     <Text Include="demo1.txt" />
     <Text Include="demo0.txt" />
     <Text Include="Fireball0.txt" />
     <Text Include="Fireball1.txt" />
+    <Text Include="Flameblast0.txt" />
+    <Text Include="Flameblast1.txt" />
+    <Text Include="Flameblast2.txt" />
+    <Text Include="Flameblast3.txt" />
+    <Text Include="Flameblast4.txt" />
+    <Text Include="Flameblast5.txt" />
+    <Text Include="Flameblast6.txt" />
+    <Text Include="Flameblast7.txt" />
+    <Text Include="Flameblast8.txt" />
+    <Text Include="Flameblast_0_color.txt" />
+    <Text Include="Flameblast_1_color.txt" />
+    <Text Include="Flameblast_2_color.txt" />
+    <Text Include="Flameblast_3_color.txt" />
+    <Text Include="Flameblast_4_color.txt" />
+    <Text Include="Flameblast_5_color.txt" />
+    <Text Include="Flameblast_6_color.txt" />
+    <Text Include="Flameblast_7_color.txt" />
+    <Text Include="Flameblast_8_color.txt" />
+    <Text Include="Flameblast_9.txt" />
+    <Text Include="Goblin.txt" />
     <Text Include="Skull1.txt" />
     <Text Include="Skull2.txt" />
     <Text Include="Skull3.txt" />
@@ -145,6 +166,7 @@
     <Text Include="mainMap.txt" />
     <Text Include="Phoenix.txt" />
     <Text Include="Skull0.txt" />
+    <Text Include="SpellDecoration_color.txt" />
     <Text Include="Splash.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

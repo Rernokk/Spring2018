@@ -74,5 +74,71 @@
     <Text Include="Splash.txt">
       <Filter>Source Files\Artwork</Filter>
     </Text>
+    <Text Include="Flameblast0.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast1.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast2.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast3.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast4.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast5.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast6.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast7.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast8.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="ActionDecoration_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="SpellDecoration_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_9.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_0_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_1_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_2_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_3_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_4_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_5_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_6_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_7_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Flameblast_8_color.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Goblin.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
   </ItemGroup>
 </Project>
