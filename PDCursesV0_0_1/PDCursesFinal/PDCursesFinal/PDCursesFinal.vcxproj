@@ -134,6 +134,8 @@
     <Text Include="ActionDecoration_color.txt" />
     <Text Include="demo1.txt" />
     <Text Include="demo0.txt" />
+    <Text Include="Dragon.txt" />
+    <Text Include="EnemyList.txt" />
     <Text Include="Fireball0.txt" />
     <Text Include="Fireball1.txt" />
     <Text Include="Flameblast0.txt" />
@@ -162,6 +164,7 @@
     <Text Include="Skull4.txt" />
     <Text Include="Skull5.txt" />
     <Text Include="Skull6.txt" />
+    <Text Include="Skullclops.txt" />
     <Text Include="SpellDecoration.txt" />
     <Text Include="mainMap.txt" />
     <Text Include="Phoenix.txt" />

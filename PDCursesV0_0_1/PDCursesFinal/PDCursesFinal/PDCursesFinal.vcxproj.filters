@@ -140,5 +140,14 @@
     <Text Include="Goblin.txt">
       <Filter>Source Files\Artwork</Filter>
     </Text>
+    <Text Include="EnemyList.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="Skullclops.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
+    <Text Include="Dragon.txt">
+      <Filter>Source Files\Artwork</Filter>
+    </Text>
   </ItemGroup>
 </Project>

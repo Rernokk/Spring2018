@@ -1,3 +1,15 @@
+//Created by Shannon Smith
+//Chad Mello
+//CS 2060-003
+//May 9, 2018
+
+//
+// Fun fact - While there's not presently a way to include your own art assets for enemies, you can technically create or tweak the enemies as necessary.
+// I've included the executable for a program to handle this process with a semi-user-friendly experience.
+// While the utility program is technically incomplete (You can only modify the first 10 entries), it can still make modifying the enemies easier/clear.
+// Enjoy! 
+//
+
 #include <curses.h>
 #include <math.h>
 #include <stdio.h>
@@ -12,7 +24,7 @@
 #define SPELL_NUMBER 1
 #define ITEM_MENU_OPTION_MAX 5
 #define ATTACK_MENU_OPTION_MAX 4
-#define SPELL_MENU_OPTION_MAX 4
+#define SPELL_MENU_OPTION_MAX 6
 #define FLEE_MENU_OPTION_MAX 1
 
 //Object declarations and definitions.
@@ -20,6 +32,7 @@ typedef struct spell {
   char name[16];
   int keyframes;
   int cost;
+  double damageRatio;
   int animHeight;
   int animWidth;
   char *** data;
@@ -700,11 +713,12 @@ void DrawEnemy(player * playerObj, enemy * obj, WINDOW* win) {
   mvwprintw(win, targetY, targetX, "Z");
 
   //Within Range for UI
-  if (sqrt(pow((obj->y - playerObj->y), 2) + pow((obj->x - playerObj->x), 2)) < NAME_RANGE)
+  //if (sqrt(pow((obj->x - playerObj->x), 2) + pow((obj->y - playerObj->y), 2)) < NAME_RANGE)
+  if (sqrt(pow(getmaxx(win)/2 - targetX, 2) + pow(getmaxy(win)/2 - targetY, 2)) < NAME_RANGE)
   {
     mvwprintw(win, targetY - 3, targetX - floor(strlen(obj->name) / 2), obj->name);
     wattron(win, COLOR_PAIR(9));
-    mvwprintw(win, targetY - 2, targetX - floor(sizeof("%d/%d", obj->currentHealth, obj->maxHealth) / 2) - 1, "%d/%d", obj->currentHealth, obj->maxHealth);
+    mvwprintw(win, targetY - 2, targetX - floor(strlen("%d/%d", obj->currentHealth, obj->maxHealth) / 2), "%d/%d", obj->currentHealth, obj->maxHealth);
     wattroff(win, COLOR_PAIR(9));
   }
 }
@@ -756,9 +770,6 @@ void LoadEnemyData(ListNode * head) {
     myEnemy->spellbook = (spell*)malloc(sizeof(spell*) * myEnemy->spellCount);
     myEnemy->level = 10;
     myEnemy->myself = (image*)malloc(sizeof(image));
-    //char tempChar[32];
-    //sprintf(tempChar, "%s.txt", myEnemy->name);
-    //image tempImage = { tempChar };
     strcpy(myEnemy->myself->name, myEnemy->name);
     LoadAsciiFile(myEnemy->myself);
     LoadAsciiColors(myEnemy->myself);
@@ -804,7 +815,7 @@ char* GenerateConsumableDrop(player* playerObj) {
       int amnt = (rand() % (2 - 1 + 1)) + 1;
       playerObj->magicPotions += amnt;
       if (amnt > 1) {
-        char* res = (char*)malloc(sizeof(char)*32);
+        char* res = (char*)malloc(sizeof(char) * 32);
         sprintf(res, "%d Mana Potions.", amnt);
         return res;
       }
@@ -817,7 +828,7 @@ char* GenerateConsumableDrop(player* playerObj) {
     else {
       int amnt = (rand() % (3 - 1 + 1)) + 1;
       playerObj->healthPotions += amnt;
-      if (amnt > 1){
+      if (amnt > 1) {
         char* res = (char*)malloc(sizeof(char) * 32);
         sprintf(res, "%d Health Potions.", amnt);
         return res;
@@ -830,6 +841,71 @@ char* GenerateConsumableDrop(player* playerObj) {
     }
   }
   return "";
+}
+void LoadEnemyList(ListNode* rt, char* file) {
+  //printf("%s name", rt->obj->name);
+
+  //Parsing From File
+  FILE* fio;
+  fio = fopen(file, "r");
+  char line[256];
+  while (fGetLine(fio, line) != EOF) {
+    if (line[0] == '\0') {
+      break;
+    }
+    rt->next = (ListNode*)malloc(sizeof(ListNode*));
+    rt = rt->next;
+
+    /*
+      myEnemy->name = "Goblin";
+      myEnemy->x = 13 + i;
+      myEnemy->y = 12;
+      myEnemy->currentHealth = myEnemy->currentMana = myEnemy->maxHealth = myEnemy->maxMana = 100;
+      myEnemy->spellCount = 0;
+      myEnemy->timeSinceLastUpdate = rand() % UPDATE_LIMITER;
+      myEnemy->spellbook = (spell*)malloc(sizeof(spell*) * myEnemy->spellCount);
+      myEnemy->level = 10;
+      myEnemy->myself = (image*)malloc(sizeof(image));
+      strcpy(myEnemy->myself->name, myEnemy->name);
+      LoadAsciiFile(myEnemy->myself);
+      LoadAsciiColors(myEnemy->myself);
+      myEnemy->slashWeakness = .5;
+      myEnemy->lungeWeakness = .75;
+      myEnemy->strikeWeakness = 1.2;
+      myEnemy->atkPower = 10;
+      myEnemy->defPower = 10;
+    */
+
+    //Assigning Values
+    char* pt = strtok(line, ", ");
+    enemy* tempEnemy = (enemy*)malloc(sizeof(enemy));
+    tempEnemy->name = (char*)malloc(sizeof(char) * 32);
+    //tempEnemy->name = pt;
+    strcpy(tempEnemy->name, pt);
+    tempEnemy->level = atoi(strtok(NULL, ", "));
+    tempEnemy->maxHealth = atoi(strtok(NULL, ", "));
+    tempEnemy->maxMana = atoi(strtok(NULL, ", "));
+    tempEnemy->currentHealth = atoi(strtok(NULL, ", "));
+    tempEnemy->currentMana = atoi(strtok(NULL, ", "));
+    tempEnemy->spellCount = atoi(strtok(NULL, ", "));
+    tempEnemy->slashWeakness = atof((strtok(NULL, ", ")));
+    tempEnemy->lungeWeakness = atof(strtok(NULL, ", "));
+    tempEnemy->strikeWeakness = atof(strtok(NULL, ", "));
+    tempEnemy->atkPower = atoi(strtok(NULL, ", "));
+    tempEnemy->defPower = atoi(strtok(NULL, ", "));
+    tempEnemy->x = atoi(strtok(NULL, ", "));
+    tempEnemy->y = atoi(strtok(NULL, ", "));
+    tempEnemy->spellCount = 0;
+    tempEnemy->spellbook = (spell*)malloc(sizeof(spell*) * tempEnemy->spellCount);
+    tempEnemy->timeSinceLastUpdate = rand() % UPDATE_LIMITER;
+    tempEnemy->myself = (image*)malloc(sizeof(image));
+    strcpy(tempEnemy->myself->name, pt);
+    LoadAsciiFile(tempEnemy->myself);
+    LoadAsciiColors(tempEnemy->myself);
+    rt->obj = tempEnemy;
+  }
+  fclose(fio);
+
 }
 
 //Main Game
@@ -907,7 +983,7 @@ int main()
 #pragma region Spells
   printf("Loading Spells.\n");
   spell* spellLibrary[SPELL_NUMBER];
-  spellLibrary[0] = &((spell) { "Flameblast", 9, 10 });
+  spellLibrary[0] = &((spell) { "Flameblast", 9, 10, 1.75 });
 
   printf("Beginning Loading Spell Animations.\n");
   for (int i = 0; i < SPELL_NUMBER; i++) {
@@ -993,10 +1069,16 @@ int main()
     //enemyListHead.obj->spellbook[i] = FetchSpell("Fireball", &spellLibrary);
   }
   //MyEnemy = *enemyListHead.obj;
+  ListNode* tempNode = &enemyListHead;
+  while (tempNode->next != 0xCDCDCDCD) {
+    tempNode = tempNode->next;
+  }
+  LoadEnemyList(tempNode, "EnemyList.txt");
 #pragma endregion
 
   //Denoting ASCII Symbols
   char wall = '#';
+
   //Game Loop
   while (TRUE) {
 #pragma region Update_Loop
@@ -1158,9 +1240,9 @@ int main()
 
           //Spell
           else if (combatMenuActionSubWindow == "SPELL") {
-            spellMenu += 1;
-            if (spellMenu > SPELL_MENU_OPTION_MAX) {
-              spellMenu = 0;
+            spellMenu -= 1;
+            if (spellMenu < 0) {
+              spellMenu = SPELL_MENU_OPTION_MAX;
             }
           }
 
@@ -1198,9 +1280,9 @@ int main()
 
           //Spell
           else if (combatMenuActionSubWindow == "SPELL") {
-            spellMenu -= 1;
-            if (spellMenu < 0) {
-              spellMenu = SPELL_MENU_OPTION_MAX;
+            spellMenu += 1;
+            if (spellMenu > SPELL_MENU_OPTION_MAX) {
+              spellMenu = 0;
             }
           }
 
@@ -1288,7 +1370,7 @@ int main()
                 BorderWindow(combatMenuSubWindow, "#");
                 WDrawAsciiFile(&actionDecoration, 1, 1, combatMenuSubWindow);
                 mvwprintw(combatMenuSubWindow, 4, 32, "You've killed the %s!", MyEnemy->name);
-                if (drop != ""){
+                if (drop != "") {
                   mvwprintw(combatMenuSubWindow, 6, 32, "You've found %s", drop);
                 }
                 wrefresh(combatMenuSubWindow);
@@ -1418,6 +1500,58 @@ int main()
           else if (combatMenuActionSubWindow == "SPELL") {
 #pragma region SpellUpdate
             switch (spellMenu) {
+            case(6):
+            case(5):
+            case(4):
+            case(3):
+            case(2):
+            case(1):
+              if (spellMenu < Player.spellCount) {
+                if (Player.spellbook[spellMenu - 1]->cost <= Player.currentMana) {
+                  Player.currentMana -= Player.spellbook[spellMenu - 1]->cost;
+                  int dmgAmnt = 0;
+                  if (atkBuffDur > 0) {
+                    dmgAmnt = floor((1.25*Player.atkPower*Player.spellbook[spellMenu - 1]->damageRatio) / (1 + log10(MyEnemy->defPower)));
+                  }
+                  else {
+                    dmgAmnt = floor((Player.atkPower*Player.spellbook[spellMenu - 1]->damageRatio) / (1 + log10(MyEnemy->defPower)));
+                  }
+                  MyEnemy->currentHealth -= dmgAmnt;
+
+                  if (MyEnemy->currentHealth < 0) {
+                    MyEnemy->currentHealth = 0;
+                  }
+
+                  nodelay(mainWindow, FALSE);
+                  wclear(combatMenuSubWindow);
+                  BorderWindow(combatMenuSubWindow, "#");
+                  WDrawAsciiFile(&actionDecoration, 1, 1, combatMenuSubWindow);
+                  mvwprintw(combatMenuSubWindow, 4, 32, "You cast %s, dealing %d damage!", Player.spellbook[spellMenu-1]->name, dmgAmnt);
+                  wrefresh(combatMenuSubWindow);
+                  getch();
+                  if (MyEnemy->currentHealth > 0) {
+                    turn = abs(turn - 1);
+                    nodelay(mainWindow, TRUE);
+                    animatingSpell = 1;
+                  }
+                  else {
+                    char* drop = GenerateConsumableDrop(&Player);
+                    wclear(combatMenuSubWindow);
+                    BorderWindow(combatMenuSubWindow, "#");
+                    WDrawAsciiFile(&actionDecoration, 1, 1, combatMenuSubWindow);
+                    mvwprintw(combatMenuSubWindow, 4, 32, "You've killed the %s!", MyEnemy->name);
+                    if (drop != "") {
+                      mvwprintw(combatMenuSubWindow, 6, 32, "You've found %s", drop);
+                    }
+                    wrefresh(combatMenuSubWindow);
+                    getch();
+                    nodelay(mainWindow, TRUE);
+                    currentScene = 1;
+                  }
+                }
+              }
+              break;
+
             case(0):
               combatMenuActionSubWindow = "MAIN";
               break;
@@ -1449,7 +1583,7 @@ int main()
       }
       else {
 #pragma region AIProcessing
-        if (MyEnemy->name == "Goblin") {
+        if (MyEnemy->name == "Goblin" || TRUE) {
           int dmgAmnt = 0;
           if (defBuffDur > 0) {
             dmgAmnt = floor(MyEnemy->atkPower / (1 + log10(floor(Player.defPower * 1.25))));
@@ -1579,8 +1713,25 @@ int main()
           break;
         }
       }
-      mvwprintw(worldInfoGameWindow, 5, 5, "Player X,Y: %d,%d. Up: %c", Player.x, Player.y, FetchMapChar(worldSceneGameWindow, &mainMap, Player.x, Player.y - 1));
-      mvwprintw(worldInfoGameWindow, 6, 5, "%s X,Y: %d,%d. Up: %c", enemyListHead.obj->name, enemyListHead.obj->y, enemyListHead.obj->x, FetchMapChar(worldSceneGameWindow, &mainMap, enemyListHead.obj->y, enemyListHead.obj->x - 1));
+
+      #pragma region WorldMenuDetails
+      //mvwprintw(worldInfoGameWindow, 5, 5, "Player X,Y: %d,%d. Up: %c", Player.x, Player.y, FetchMapChar(worldSceneGameWindow, &mainMap, Player.x, Player.y - 1));
+      //mvwprintw(worldInfoGameWindow, 6, 5, "%s X,Y: %d,%d. Up: %c", enemyListHead.obj->name, enemyListHead.obj->y, enemyListHead.obj->x, FetchMapChar(worldSceneGameWindow, &mainMap, enemyListHead.obj->y, enemyListHead.obj->x - 1));
+      mvwprintw(worldInfoGameWindow, 4, 5, "Health: %d/%d", Player.currentHealth, Player.maxHealth);
+      wattron(worldInfoGameWindow, COLOR_PAIR(2));
+      for (int i = 0; i < floor(((float)Player.currentHealth / Player.maxHealth) * 18); i++) {
+        mvwprintw(worldInfoGameWindow, 6, 5 + i, "X");
+      }
+      wattroff(worldInfoGameWindow, COLOR_PAIR(2));
+
+      mvwprintw(worldInfoGameWindow, 9, 5, "Mana: %d/%d", Player.currentMana, Player.maxMana);
+      wattron(worldInfoGameWindow, COLOR_PAIR(4));
+      for (int i = 0; i < floor(((float)Player.currentMana / Player.maxMana) * 18); i++) {
+        mvwprintw(worldInfoGameWindow, 11, 5 + i, "X");
+      }
+      wattroff(worldInfoGameWindow, COLOR_PAIR(4));
+      #pragma endregion
+
       DrawPlayerNameCenter(Player, worldSceneGameWindow);
       wattron(worldSceneGameWindow, COLOR_PAIR(3));
       mvwprintw(worldSceneGameWindow, ceil(getmaxy(worldSceneGameWindow) / 2), ceil(getmaxx(worldSceneGameWindow) / 2), "X");
@@ -1722,6 +1873,28 @@ int main()
 #pragma region SpellMenu
         char spellInput[32];
         mvwprintw(combatMenuSubWindow, 2, 32, "CAST SPELL");
+        for (int i = 0; i < 6; i++) {
+          if (spellMenu == (6 - i)) {
+            if (Player.spellCount <= (6 - i)) {
+              wattron(combatMenuSubWindow, COLOR_PAIR(3));
+              mvwprintw(combatMenuSubWindow, 3 + ((6-i) * 2), 32, "%d: --------", (6 - i));
+              wattroff(combatMenuSubWindow, COLOR_PAIR(3));
+            }
+            else {
+              wattron(combatMenuSubWindow, COLOR_PAIR(3));
+              mvwprintw(combatMenuSubWindow, 3 + ((6 - i) * 2), 32, "%d: %s", (6 - i), Player.spellbook[6 - i]);
+              wattroff(combatMenuSubWindow, COLOR_PAIR(3));
+            }
+          }
+          else {
+            if (Player.spellCount <= (6 - i)) {
+              mvwprintw(combatMenuSubWindow, 3 + ((6 - i) * 2), 32, "%d: --------", (6 - i));
+            }
+            else {
+              mvwprintw(combatMenuSubWindow, 3 + ((6 - i) * 2), 32, "%d: %s", (6 - i), Player.spellbook[6 - i]);
+            }
+          }
+        }
 
         if (spellMenu == 0) {
           wattron(combatMenuSubWindow, COLOR_PAIR(3));
